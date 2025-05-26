@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: ""
+workgroup: "Network Management"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Network Management"
+  type: ""
+  mail: "nmrg@irtf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/nmrg"
+  github: "limei2011/ndt-data-generation-optimization"
+  latest: "https://limei2011.github.io/ndt-data-generation-optimization/draft-li-nmrg-dtn-data-generation-optimization.html"
 
 author:
  -
