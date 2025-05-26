@@ -17,19 +17,19 @@ keyword:
  - data optimization
 
 author:
- -
+-
     fullname: Mei Li
     organization: China Mobile
     city: Beijing
     country: China
     email: limeiyjy@chinamobile.com
-  -
+-
     fullname: Cheng Zhou
     organization: China Mobile
     city: Beijing
     country: China
     email: zhouchengyjy@chinamobile.com
-  -
+-
     fullname: Danyang Chen
     organization: China Mobile
     city: Beijing
