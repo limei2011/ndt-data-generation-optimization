@@ -95,7 +95,7 @@ CBR: Constant Bit Rate
 
 # Requirements
 
-Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}. AI is a data-driven technology whose performance heavily depends on data quality. 
+Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}. AI is a data-driven technology whose performance heavily depends on data quality.
 
 Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
 
