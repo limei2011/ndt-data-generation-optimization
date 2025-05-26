@@ -47,6 +47,23 @@ normative:
 
 informative:
 
+I-D.irtf-nmrg-network-digital-twin-arch:
+  title: "Network Digital Twin: Concepts and Reference Architecture"
+  target: https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/
+  date: 2025
+
+RouteNet:
+  title: "RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"
+  author:
+    org: IEEE Journal on Selected Areas in Communication (JSAC)
+  date: 2020
+
+MimicNet:
+  title: "MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"
+  author:
+    org: ACM SIGCOMM 2021 Conference
+  date: 2021
+
 
 --- abstract
 
@@ -56,7 +73,7 @@ Network Digital Twin (NDT) can be used as a secure and cost-effective environmen
 
 # Introduction
 
-Digital twin is a virtual instance of a physical system (twin) that is continually updated with the latter's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking [I-D.irtf-nmrg-network-digital-twin-arch].  NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios.  Recently, AI models, especially neural networks, have been applied for NDT modeling.
+Digital twin is a virtual instance of a physical system (twin) that is continually updated with the latter's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking {{I-D.irtf-nmrg-network-digital-twin-arch}}.  NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios.  Recently, AI models, especially neural networks, have been applied for NDT modeling.
 
 The quality of AI models mainly depends on two aspects: model architecture and data.  This memo focuses on the impact of training data on the model.  The quality of training data will directly affect the accuracy and generalization ability of the model.  This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources.  Using high-quality data for training can improve the accuracy and generalization ability of the model.
 
@@ -86,7 +103,7 @@ CBR: Constant Bit Rate
 
 # Requirements
 
-Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet [RouteNet] and MimicNet [MimicNet].  AI is a data-driven technology whose performance heavily depends on data quality. Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
+Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}.  AI is a data-driven technology whose performance heavily depends on data quality. Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
 
 - Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited.  Moreover, it is not practical in production networks to collect data under various configurations;
 
