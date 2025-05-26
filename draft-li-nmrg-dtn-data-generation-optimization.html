@@ -5,15 +5,17 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>Data Generation and Optimization for Network Digital Twin</title>
-<meta content="Your Name Here" name="author">
+<meta content="Mei Li" name="author">
+<meta content="Cheng Zhou" name="author">
+<meta content="Danyang Chen" name="author">
 <meta content="
-       TODO Abstract 
+       Network Digital Twin (NDT) can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, AI models, especially neural networks, have been applied for NDT modeling. The quality of deep learning models mainly depends on two aspects: model architecture and data.  This memo focuses on how to improve the model from the data perspective. 
     " name="description">
 <meta content="xml2rfc 3.28.1" name="generator">
-<meta content="next generation" name="keyword">
-<meta content="unicorn" name="keyword">
-<meta content="sparkling distributed ledger" name="keyword">
-<meta content="draft-li-nmrg-dtn-data-generation-optimization" name="ietf.draft">
+<meta content="network digital twin" name="keyword">
+<meta content="data generation" name="keyword">
+<meta content="data optimization" name="keyword">
+<meta content="draft-li-nmrg-dtn-data-generation-optimization-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.28.1
     Python 3.12.10
@@ -1045,11 +1047,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">TODO - Abbreviation</td>
+<td class="center">Data Generation and Optimization for Net</td>
 <td class="right">May 2025</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Here</td>
+<td class="left">Li, et al.</td>
 <td class="center">Expires 27 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1058,9 +1060,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">Network Management</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-li-nmrg-dtn-data-generation-optimization</dd>
+<dd class="internet-draft">draft-li-nmrg-dtn-data-generation-optimization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2025-05-26" class="published">26 May 2025</time>
@@ -1069,11 +1071,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
 <dd class="expires"><time datetime="2025-11-27">27 November 2025</time></dd>
-<dt class="label-authors">Author:</dt>
+<dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">Y. N. Here</div>
-<div class="org">Your Organization Here</div>
+      <div class="author-name">M. Li</div>
+<div class="org">China Mobile</div>
+</div>
+<div class="author">
+      <div class="author-name">C. Zhou</div>
+<div class="org">China Mobile</div>
+</div>
+<div class="author">
+      <div class="author-name">D. Chen</div>
+<div class="org">China Mobile</div>
 </div>
 </dd>
 </dl>
@@ -1081,22 +1091,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Data Generation and Optimization for Network Digital Twin</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-</section>
-<section class="note rfcEditorRemove" id="section-note.1">
-      <h2 id="name-about-this-document">
-<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
-      </h2>
-<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
-<p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-li-nmrg-dtn-data-generation/">https://datatracker.ietf.org/doc/draft-li-nmrg-dtn-data-generation/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3">
-        Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
-<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Network Digital Twin (NDT) can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, AI models, especially neural networks, have been applied for NDT modeling. The quality of deep learning models mainly depends on two aspects: model architecture and data.  This memo focuses on how to improve the model from the data perspective.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1150,22 +1145,78 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-requirements" class="internal xref">Requirements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-framework-of-data-generatio" class="internal xref">Framework of Data Generation and Optimization</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-data-generation-stage" class="internal xref">Data Generation Stage</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-data-optimization-stage" class="internal xref">Data Optimization Stage</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-data-generation" class="internal xref">Data Generation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-network-topology" class="internal xref">Network Topology</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-routing-policy" class="internal xref">Routing Policy</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-traffic-matrix" class="internal xref">Traffic Matrix</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-data-optimization" class="internal xref">Data Optimization</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-seed-sample-selection-phase" class="internal xref">Seed Sample Selection Phase</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-incremental-optimization-ph" class="internal xref">Incremental Optimization Phase</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-use-cases" class="internal xref">Use Cases</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-configuration-evaluation-an" class="internal xref">Configuration Evaluation and Optimization in Data Center Networks</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-performance-prediction-in-i" class="internal xref">Performance Prediction in IP Bearer Networks</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-task-offloading-in-vehicula" class="internal xref">Task Offloading in Vehicular Networks</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-discussion" class="internal xref">Discussion</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1176,49 +1227,290 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">Digital twin is a virtual instance of a physical system (twin) that is continually updated with the latter's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking <span>[<a href="#I-D.irtf-nmrg-network-digital-twin-arch" class="cite xref">I-D.irtf-nmrg-network-digital-twin-arch</a>]</span>.  NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, AI models, especially neural networks, have been applied for NDT modeling.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">The quality of AI models mainly depends on two aspects: model architecture and data. This memo focuses on the impact of training data on the model.  The quality of training data will directly affect the accuracy and generalization ability of the model. This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources.  Using high-quality data for training can improve the accuracy and generalization ability of the model.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="conventions-and-definitions">
+<div id="acronyms-and-abbreviations">
 <section id="section-2">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      <h2 id="name-acronyms-and-abbreviations">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
       </h2>
-<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
-"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
-described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">NDT: Network Digital Twin<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">AI: Artificial Intelligence<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">AIGC: AI-Generated Content<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">ToS: Type of Service<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-5">OOD: Out-of-Distribution<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">FIFO: First In First Out<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-7">SP: Strict Priority<a href="#section-2-7" class="pilcrow">¶</a></p>
+<p id="section-2-8">WFQ: Weighted Fair Queuing<a href="#section-2-8" class="pilcrow">¶</a></p>
+<p id="section-2-9">DRR: Deficit Round Robin<a href="#section-2-9" class="pilcrow">¶</a></p>
+<p id="section-2-10">BFS: Breadth-First Search<a href="#section-2-10" class="pilcrow">¶</a></p>
+<p id="section-2-11">CBR: Constant Bit Rate<a href="#section-2-11" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="requirements">
+<section id="section-3">
+      <h2 id="name-requirements">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
+      </h2>
+<p id="section-3-1">Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet <span>[<a href="#RouteNet" class="cite xref">RouteNet</a>]</span> and MimicNet <span>[<a href="#MimicNet" class="cite xref">MimicNet</a>]</span>. AI is a data-driven technology whose performance heavily depends on data quality. Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-2.1">
+          <p id="section-3-2.1.1">Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited. Moreover, it is not practical in production networks to collect data under various configurations;<a href="#section-3-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-2.2">
+          <p id="section-3-2.2.1">Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent.  However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;<a href="#section-3-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-2.3">
+          <p id="section-3-2.3.1">Generative AI models: With the development of AI-Generated Content (AIGC) technology, generative AI models (e.g., GPT and LLaMA) can be used to generate simulated network data, which can solve the problems of quantity and diversity to a certain extent. However, the accuracy of the data generated by generative AI models is limited and often has gaps with practical data from production networks.<a href="#section-3-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-3-3">Therefore, data generation and optimization methods for NDT performance modeling are needed, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from multi-source data. High-quality data meets the requirements of high accuracy, diversity, and fitting the actual situation of practical data. Training with high-quality data can improve the accuracy and generalization of NDT performance models.<a href="#section-3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="framework-of-data-generation-and-optimization">
+<section id="section-4">
+      <h2 id="name-framework-of-data-generatio">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-framework-of-data-generatio" class="section-name selfRef">Framework of Data Generation and Optimization</a>
+      </h2>
+<p id="section-4-1">The framework of data generation and optimization for NDT performance modeling is shown in Figure 1, which includes two stages: the data generation stage and the data optimization stage.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<span id="name-framework-of-data-generation"></span><div id="kelem">
+<figure id="figure-1">
+        <div class="alignCenter art-text artwork" id="section-4-2.1">
+<pre>
+Data generation                   Data optimization
+   +---------------------------+ +-------------------------------------+
+   |                           | |                                     |
+   | +---------+               | |              +---------+            |
+   | |         |               | | +----------+ |         |            |
+   | | Network |               | | | Practical| | Easy    |            |
+   | | topology| +-----------+ | | | data     | | samples |            |
+   | |         | |           | | | +-----+----+ |         |            |
+   | |         | | Network   | | |       |      |         | +--------+ |
+   | |         | | simulator | | | +-----v----+ |         | |        | |
+   | | Routing | |           | | | |          | | Hard    | | High   | |
+   | | policy  +-&gt;           +-+-+-&gt; Candidate+-&gt; samples +-&gt; quality| |
+   | |         | |           | | | | data     | |         | | data   | |
+   | |         | | Generative| | | |          | |         | |        | |
+   | |         | | AI model  | | | +----------+ |         | +--------+ |
+   | | Traffic | |           | | |              | OOD     |            |
+   | | matrix  | +-----------+ | |              | samples |            |
+   | |         | Data generator| |              | (remove)|            |
+   | +---------+               | |              |         |            |
+   |  Network                  | |              +---------+            |
+   |  configuration            | |             Data selection          |
+   |                           | |                                     |
+   +---------------------------+ +-------------------------------------+
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-framework-of-data-generation" class="selfRef">Framework of Data Generation and Optimization for NDT</a>
+        </figcaption></figure>
+</div>
+<div id="data-generation-stage">
+<section id="section-4.1">
+        <h3 id="name-data-generation-stage">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-data-generation-stage" class="section-name selfRef">Data Generation Stage</a>
+        </h3>
+<p id="section-4.1-1">The data generation stage aims to generate candidate data (simulated network data) to solve the problem of the shortage of practical data from production networks.  This stage first generates network configurations and then imports them into data generators to generate the candidate data.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.1-2.1">
+            <p id="section-4.1-2.1.1">Network configurations: Network configurations typically include network topology, routing policy, and traffic matrix.  These configurations need to be diverse to cover as many scenarios as possible. Topology configurations include the number and structure of nodes and edges, node buffers' size and scheduling strategy, link capacity, etc.  Routing policy determines the path of a packet from the source to the destination. The traffic matrix describes the traffic entering/leaving the network, which includes the traffic's source, destination, time and packet size distribution, Type of Service (ToS), etc.<a href="#section-4.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-2.2">
+            <p id="section-4.1-2.2.1">Data generators: Data generators can be network simulators (e.g., NS-3 and OMNeT++) and/or the generative AI models (e.g., GPT and LLaMA). Network configurations are imported into data generators to generate candidate data.<a href="#section-4.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="data-optimization-stage">
+<section id="section-4.2">
+        <h3 id="name-data-optimization-stage">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-data-optimization-stage" class="section-name selfRef">Data Optimization Stage</a>
+        </h3>
+<p id="section-4.2-1">The data optimization stage aims to optimize the candidate data from various sources to select high-quality data.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-2.1">
+            <p id="section-4.2-2.1.1">Candidate data: Candidate data includes simulated network data generated in the data generation stage and the practical data from production networks.<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.2">
+            <p id="section-4.2-2.2.1">Data selection: The data selection module investigates the candidate data to filter out the easy, hard, and Out-of- Distribution (OOD) samples. Hard examples refer to samples that are difficult for the model to accurately predict. During the training process, exposing the model to more hard examples will enable it to perform better on such samples later on.  Then the easy samples and hard samples are considered valid samples and added to the training data. OOD samples are considered invalid and removed.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.3">
+            <p id="section-4.2-2.3.1">High-quality data: High-quality data needs to meet the requirements of high accuracy, diversity, and fitting the actual situation of practical data, which can be verified by expert knowledge (such as the ranges of delay, queue utilization, link utilization, and average port occupancy).<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+</section>
+</div>
+<div id="data-generation">
+<section id="section-5">
+      <h2 id="name-data-generation">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-data-generation" class="section-name selfRef">Data Generation</a>
+      </h2>
+<p id="section-5-1">This section will describe how to generate network configurations, including network topology, routing policy, and traffic matrix. Then these configurations will be imported into data generators to generate the candidate data.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="network-topology">
+<section id="section-5.1">
+        <h3 id="name-network-topology">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-network-topology" class="section-name selfRef">Network Topology</a>
+        </h3>
+<p id="section-5.1-1">Network topologies are generated using the Power-Law Out-Degree algorithm, where parameters are set according to real-world topologies in the Internet Topology Zoo.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-2">When the flow rate exceeds the link bandwidth or the bandwidth set for the flow, the packet is temporarily stored in the node buffer. A larger node buffer size means a larger delay and possibly a lower packet loss rate. The node scheduling policy determines the time and order of packet transmission, which is randomly selected from the policies such as First In First Out (FIFO), Strict Priority (SP), Weighted Fair Queuing (WFQ), and Deficit Round Robin (DRR).<a href="#section-5.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.1-3">A larger link capacity means a smaller delay and less congestion. To cover diverse link loads to get good coverage of possible scenarios, we set the link capacity to be proportional to the total average bandwidth of the flows passing through the link.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="routing-policy">
+<section id="section-5.2">
+        <h3 id="name-routing-policy">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-routing-policy" class="section-name selfRef">Routing Policy</a>
+        </h3>
+<p id="section-5.2-1">Routing policy plays a crucial role in routing protocols, which determines the path of a packet from the source to the destination.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5.2-2.1">
+            <p id="section-5.2-2.1.1">Default: We set the weight of all links in the topology to be the same, that is, equal to 1. Then we use the Dijkstra algorithm to generate the shortest path configuration. Dijkstra algorithm uses Breadth-First Search (BFS) to find the single source shortest path in a weighted digraph.<a href="#section-5.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-5.2-2.2">
+            <p id="section-5.2-2.2.1">Variants: We randomly select some links (the same link can be chosen more than once) and add a small weight to them. Then we use the Dijkstra algorithm to generate a series of variants of the default shortest path configuration based on the weighted graph. These variants can add some randomness to the routing configuration to cover longer paths and larger delays.<a href="#section-5.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="traffic-matrix">
+<section id="section-5.3">
+        <h3 id="name-traffic-matrix">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-traffic-matrix" class="section-name selfRef">Traffic Matrix</a>
+        </h3>
+<p id="section-5.3-1">The traffic matrix is very important for network performance modeling. The traffic matrix can be regarded as a network map, which describes the traffic entering/leaving the network, including the source, destination, distribution of the traffic, etc.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">We generate traffic matrix configurations with variable traffic intensity to cover low to high loads.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">The parameters packet sizes, packet size probabilities, and ToS are generated according to the validation dataset analysis to have similar distributions.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.3-4">The arrival of packets for each source-destination pair is modeled using one of the time distributions such as Poisson, Constant Bit Rate (CBR), and ON-OFF.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="data-optimization">
+<section id="section-6">
+      <h2 id="name-data-optimization">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-data-optimization" class="section-name selfRef">Data Optimization</a>
+      </h2>
+<p id="section-6-1">This section will describe how to optimize the data from various sources to filter out high-quality data, which includes the seed sample selection phase and incremental optimization phase. Candidate data includes simulated network data generated in the data generation stage and real data from production networks. Data optimization supports a variety of selection strategies, including high fidelity, high coverage, etc. High fidelity means that the selected data can fit the real data (e.g., having similar topologies, routing policies, traffic models, etc.), and high coverage means that the selected data can cover as many scenarios as possible.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<div id="seed-sample-selection-phase">
+<section id="section-6.1">
+        <h3 id="name-seed-sample-selection-phase">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-seed-sample-selection-phase" class="section-name selfRef">Seed Sample Selection Phase</a>
+        </h3>
+<p id="section-6.1-1">In the seed sample selection phase, high-quality seed samples are selected through the following steps to provide high-quality initial samples for the incremental optimization phase.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">STEP 1: Training feature extraction model and feature extraction.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">(1.1) The training data D' is selected from the candidate data D according to the selection strategy.  For the high fidelity strategy, the real data is used as the training data D'; for the high coverage strategy, the real data and simulated data are used together as the training data D'.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.1-4">(1.2) Feature extraction model E is trained using the training data D'. Feature extraction model E is a network performance evaluation model that can be used to evaluate performance indicators such as delay, jitter and packet loss (such as RouteNet).<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">(1.3) Use the feature extraction model E obtained in STEP (1.2) to extract the feature of the training data D' obtained in STEP (1.1). A network can be defined as a set of flow F, queue Q, and link L. The link state SF (such as link utilization), queue state SQ (such as port occupation), and flow state SL (such as delay, throughput, packet loss, etc.) are taken as features. Each sample in the training data D' is converted to a feature vector [SF,SQ,SL].<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+<p id="section-6.1-6">STEP 2: Clustering.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
+<p id="section-6.1-7">Cluster the training data D' after feature extraction. Clustering (such as K-means and DBSCAN) is an unsupervised machine learning technique that can automatically discover the natural groups in the data, divide the data into multiple clusters, and the samples in the same cluster have similarities.<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+<p id="section-6.1-8">Repeat STEP 3 and STEP 4 until all clusters have been traversed.<a href="#section-6.1-8" class="pilcrow">¶</a></p>
+<p id="section-6.1-9">STEP 3: Calculating cluster centers and nearest neighbors.<a href="#section-6.1-9" class="pilcrow">¶</a></p>
+<p id="section-6.1-10">(3.1) Calculate cluster centers. The method of calculating cluster centers is determined according to the clustering algorithm used in STEP 2. For example, using K-means clustering algorithm, the cluster center is calculated by finding the average of all data points in the cluster. These cluster centers are added to the seed dataset DS.<a href="#section-6.1-10" class="pilcrow">¶</a></p>
+<p id="section-6.1-11">(3.2) Calculate k nearest neighbors of each cluster center and add them to the seed dataset DS.  Suitable nearest neighbor calculation methods can be used, such as Euclidean distance, cosine distance, etc.<a href="#section-6.1-11" class="pilcrow">¶</a></p>
+<p id="section-6.1-12">STEP 4: Expert knowledge verification.<a href="#section-6.1-12" class="pilcrow">¶</a></p>
+<p id="section-6.1-13">(4.1) Expert knowledge can be used to verify the validity of samples through the range of indicators such as delay, queue occupation, and link utilization.  If the verification passed, go to STEP 3. Otherwise, go to STEP (4.2).<a href="#section-6.1-13" class="pilcrow">¶</a></p>
+<p id="section-6.1-14">(4.2) Randomly select m samples from the seed dataset DS and remove them. Calculate the nearest neighbors of the removed m samples, add them to the seed data set DS, and go to STEP (4.1).<a href="#section-6.1-14" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="incremental-optimization-phase">
+<section id="section-6.2">
+        <h3 id="name-incremental-optimization-ph">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-incremental-optimization-ph" class="section-name selfRef">Incremental Optimization Phase</a>
+        </h3>
+<p id="section-6.2-1">The seed samples are taken as the initial training dataset. The filter model investigates the remaining candidate samples to filter out the easy, hard and OOD samples. Then the easy samples and hard samples are added to the training dataset. These processes are repeated to iteratively optimize the filter model and the training data until the high-quality data meets the constraints.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="use-cases">
+<section id="section-7">
+      <h2 id="name-use-cases">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-use-cases" class="section-name selfRef">Use Cases</a>
+      </h2>
+<p id="section-7-1">NDT can be applied to various types of networks, including data center networks, IP bearer networks, vehicular networks, wireless networks, optical networks, and IoT networks. This section highlights the significance of data generation and optimization in NDT by presenting several typical use cases.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="configuration-evaluation-and-optimization-in-data-center-networks">
+<section id="section-7.1">
+        <h3 id="name-configuration-evaluation-an">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-configuration-evaluation-an" class="section-name selfRef">Configuration Evaluation and Optimization in Data Center Networks</a>
+        </h3>
+<p id="section-7.1-1">Data centers are essential for the growth of Internet services, consisting of numerous computing and storage nodes linked by a data center network (DCN), which serves as the communication backbone. The DCN faces challenges related to its large scale, diverse applications, high power density, and the need for reliability. NDT can evaluate configurations and technologies to reduce the risk of failures. For NDT to be effective, it must accurately model DCN traffic. A key challenge lies in generating realistic network traffic. By analyzing traffic patterns, data generation and optimization techniques can assist in creating simulated network data and optimize both real and simulated data. Numerous factors, such as the type of business, network size, volume of traffic, and load, influence traffic patterns in extensive DCNs. Moreover, these traffic patterns are dynamic and evolve over time. For instance, workloads that are sensitive to latency, like online transaction processing, tend to peak during the day, whereas workloads for online analytical processing are more prevalent at night.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="performance-prediction-in-ip-bearer-networks">
+<section id="section-7.2">
+        <h3 id="name-performance-prediction-in-i">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-performance-prediction-in-i" class="section-name selfRef">Performance Prediction in IP Bearer Networks</a>
+        </h3>
+<p id="section-7.2-1">Internet service providers encounter challenges in delivering high-bandwidth, low-latency, and reliable services, especially in large networks like metropolitan area networks (MANs) . The widely adopted IP protocol adheres to a best-effort principle, making predictable performance difficult and complicating the stability and availability of network services during failures. NDT can function as a high-fidelity simulation platform for predicting IP bearer network performance.  Accurate network status information is vital for optimizing protocols and identifying faults. Recent advancements in in-band network telemetry (INT) technology have allowed the integration of network performance data into packet headers on the data plane. Utilizing real performance data from INT, data generation and optimization techniques can create fine-grained simulated data, enhancing both real and simulated datasets for better model training outcomes.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="task-offloading-in-vehicular-networks">
+<section id="section-7.3">
+        <h3 id="name-task-offloading-in-vehicula">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-task-offloading-in-vehicula" class="section-name selfRef">Task Offloading in Vehicular Networks</a>
+        </h3>
+<p id="section-7.3-1">The rise of vehicular networks has facilitated various delay-sensitive applications, including autonomous driving and navigation. However, vehicles with limited resources struggle to meet the low/ultra-low latency requirements. To address this, computationally intensive tasks can be offloaded to resource-rich platforms like nearby vehicles, edge servers, and cloud servers. The dynamic nature of these networks, along with strict low-delay demands and large task data, presents significant offloading challenges. NDT is an emerging method that allows real-time monitoring of vehicular networks, aiding in effective offload decisions. Additionally, machine learning algorithms are increasingly utilized for task offloading to enhance accuracy and efficiency. Unlike traditional communication networks, vehicular networks are more dynamic and heterogeneous, leading to data shortages and quality issues. Data generation and optimization techniques can simulate data for adaptability and filter high-quality data from various sources, thereby improving model training effectiveness.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="discussion">
+<section id="section-8">
+      <h2 id="name-discussion">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
+      </h2>
+<p id="section-8-1">Several topics related to data generation and optimization for NDT performance modeling require further discussion.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8-2.1">
+          <p id="section-8-2.1.1">Data generation methods: 1) Generate configurations that cover enough scenarios and scale from small to large networks. 2) Choose data generators that consider accuracy, speed, fidelity, etc. 3) Use data augmentation technology to expand the training data by using a small amount of practical data to generate similar data through prior knowledge.<a href="#section-8-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.2">
+          <p id="section-8-2.2.1">Data optimization methods: 1) Select data from multi-source candidate data, including hard sample mining, OOD detection, etc. 2) Verify whether the data quality meets the requirements.<a href="#section-8-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.3">
+          <p id="section-8-2.3.1">Deployment: 1) Time/space complexity and explainability of the data generation and optimization methods. 2) Provide feedback for data collection to form a closed loop.<a href="#section-8-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-3">
+<section id="section-9">
       <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">TBD<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-4">
+<section id="section-10">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">This document has no IANA actions.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
-<section id="section-5">
-      <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<div id="sec-informative-references">
+<section id="section-11">
+      <h2 id="name-informative-references">
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
       </h2>
 <dl class="references">
-<dt id="RFC2119">[RFC2119]</dt>
+<dt id="I-D.irtf-nmrg-network-digital-twin-arch">[I-D.irtf-nmrg-network-digital-twin-arch]</dt>
       <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<span class="refTitle">"Network Digital Twin: Concepts and Reference Architecture"</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/">https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8174">[RFC8174]</dt>
+<dt id="MimicNet">[MimicNet]</dt>
+      <dd>
+<span class="refAuthor">ACM SIGCOMM 2021 Conference</span>, <span class="refTitle">"MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"</span>, <time datetime="2021" class="refDate">2021</time>. </dd>
+<dd class="break"></dd>
+<dt id="RouteNet">[RouteNet]</dt>
     <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">IEEE Journal on Selected Areas in Communication (JSAC)</span>, <span class="refTitle">"RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"</span>, <time datetime="2020" class="refDate">2020</time>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1233,15 +1525,37 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </div>
 <div id="authors-addresses">
 <section id="appendix-B">
-      <h2 id="name-authors-address">
-<a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Your Name Here</span></div>
-<div dir="auto" class="left"><span class="org">Your Organization Here</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Mei Li</span></div>
+<div dir="auto" class="left"><span class="org">China Mobile</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:your.email@example.com" class="email">your.email@example.com</a>
+<a href="mailto:limeiyjy@chinamobile.com" class="email">limeiyjy@chinamobile.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Cheng Zhou</span></div>
+<div dir="auto" class="left"><span class="org">China Mobile</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:zhouchengyjy@chinamobile.com" class="email">zhouchengyjy@chinamobile.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Danyang Chen</span></div>
+<div dir="auto" class="left"><span class="org">China Mobile</span></div>
+<div dir="auto" class="left"><span class="locality">Beijing</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:chendanyang@chinamobile.com" class="email">chendanyang@chinamobile.com</a>
 </div>
 </address>
 </section>
