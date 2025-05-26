@@ -207,7 +207,7 @@ STEP 1: Training feature extraction model and feature extraction.
 
 (1.2) Feature extraction model E is trained using the training data D'. Feature extraction model E is a network performance evaluation model that can be used to evaluate performance indicators such as delay, jitter and packet loss (such as RouteNet).
 
-(1.3) Use the feature extraction model E obtained in STEP (1.2) to extract the feature of the training data D' obtained in STEP (1.1). A network can be defined as a set of flow F, queue Q, and link L. The link state SF (such as link utilization), queue state SQ (such as port occupation), and flow state SL (such as delay, throughput, packet loss, etc.) are taken as features. Each sample in the training data D' is converted to a feature vector [SF,SQ,SL].
+(1.3) Use the feature extraction model E obtained in STEP (1.2) to extract the feature of the training data D' obtained in STEP (1.1). A network can be defined as a set of flow F, queue Q, and link L. The link state SF (such as link utilization), queue state SQ (such as port occupation), and flow state SL (such as delay, throughput, packet loss, etc.) are taken as features. Each sample in the training data D' is converted to a feature vector \[SF,SQ,SL\].
 
 STEP 2: Clustering.
 
