@@ -95,7 +95,9 @@ CBR: Constant Bit Rate
 
 # Requirements
 
-Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}. AI is a data-driven technology whose performance heavily depends on data quality. Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
+Performance modeling is vital in NDT, which is involved in typical network management scenarios such as planning, operation, optimization, and upgrade.  Recently, some studies have applied AI models to NDT performance modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}. AI is a data-driven technology whose performance heavily depends on data quality. 
+
+Network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
 
 - Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited. Moreover, it is not practical in production networks to collect data under various configurations;
 - Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent.  However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;
@@ -108,7 +110,7 @@ Therefore, data generation and optimization methods for NDT performance modeling
 The framework of data generation and optimization for NDT performance modeling is shown in Figure 1, which includes two stages: the data generation stage and the data optimization stage.
 
 ~~~~
-Data generation                   Data optimization
+          Data generation                   Data optimization
    +---------------------------+ +-------------------------------------+
    |                           | |                                     |
    | +---------+               | |              +---------+            |
@@ -180,7 +182,9 @@ The arrival of packets for each source-destination pair is modeled using one of 
 
 # Data Optimization
 
-This section will describe how to optimize the data from various sources to filter out high-quality data, which includes the seed sample selection phase and incremental optimization phase. Candidate data includes simulated network data generated in the data generation stage and real data from production networks. Data optimization supports a variety of selection strategies, including high fidelity, high coverage, etc. High fidelity means that the selected data can fit the real data (e.g., having similar topologies, routing policies, traffic models, etc.), and high coverage means that the selected data can cover as many scenarios as possible.
+This section will describe how to optimize the data from various sources to filter out high-quality data, which includes the seed sample selection phase and incremental optimization phase. 
+
+Candidate data includes simulated network data generated in the data generation stage and real data from production networks. Data optimization supports a variety of selection strategies, including high fidelity, high coverage, etc. High fidelity means that the selected data can fit the real data (e.g., having similar topologies, routing policies, traffic models, etc.), and high coverage means that the selected data can cover as many scenarios as possible.
 
 ## Seed Sample Selection Phase
 
