@@ -30,12 +30,14 @@ author:
     city: Beijing
     country: China
     email: limeiyjy@chinamobile.com
+ 
  -
     fullname: Cheng Zhou
     organization: China Mobile
     city: Beijing
     country: China
     email: zhouchengyjy@chinamobile.com
+ 
  -
     fullname: Danyang Chen
     organization: China Mobile
@@ -47,22 +49,22 @@ normative:
 
 informative:
 
-I-D.irtf-nmrg-network-digital-twin-arch:
-  title: "Network Digital Twin: Concepts and Reference Architecture"
-  target: https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/
-  date: 2025
+  I-D.irtf-nmrg-network-digital-twin-arch:
+    title: "Network Digital Twin: Concepts and Reference Architecture"
+    target: https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/
+    date: 2025
 
-RouteNet:
-  title: "RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"
-  author:
-    org: IEEE Journal on Selected Areas in Communication (JSAC)
-  date: 2020
+  RouteNet:
+    title: "RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"
+    author:
+      org: IEEE Journal on Selected Areas in Communication (JSAC)
+    date: 2020
 
-MimicNet:
-  title: "MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"
-  author:
-    org: ACM SIGCOMM 2021 Conference
-  date: 2021
+  MimicNet:
+    title: "MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"
+    author:
+      org: ACM SIGCOMM 2021 Conference
+    date: 2021
 
 
 --- abstract
