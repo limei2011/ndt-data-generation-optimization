@@ -5,8 +5,11 @@
 Network Management                                                 M. Li
 Internet-Draft                                                   C. Zhou
 Intended status: Informational                                   D. Chen
-Expires: 27 November 2025                                   China Mobile
-                                                             26 May 2025
+Expires: 1 December 2025                                    China Mobile
+                                                                   Q. Wu
+                                                                 Y. Yang
+                                                                  Huawei
+                                                             30 May 2025
 
 
        Data Generation and Optimization for Network Digital Twin
@@ -37,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 November 2025.
+   This Internet-Draft will expire on 1 December 2025.
 
 Copyright Notice
 
@@ -529,3 +532,13 @@ Authors' Addresses
    Beijing
    China
    Email: chendanyang@chinamobile.com
+
+
+   Qin Wu
+   Huawei
+   Email: bill.wu@huawei.com
+
+
+   Yuanyuan Yang
+   Huawei
+   Email: yangyuanyuan55@huawei.com
