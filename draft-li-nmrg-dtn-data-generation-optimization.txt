@@ -22,7 +22,7 @@ Abstract
    what-if scenarios.  Recently, AI models, especially neural networks,
    have been applied for NDT modeling.  The quality of deep learning
    models mainly depends on two aspects: model architecture and data.
-   This memo focuses on how to improve the model from the data
+   This memo focuses on how to improve the model quality from the data
    perspective.
 
 Status of This Memo
@@ -74,7 +74,7 @@ Table of Contents
    7.  Use Cases
      7.1.  Configuration Evaluation and Optimization in Data Center
            Networks
-     7.2.  Performance Prediction in IP Bearer Networks
+     7.2.  Performance Prediction in IP Transport Networks
      7.3.  Task Offloading in Vehicular Networks
    8.  Discussion
    9.  Security Considerations
@@ -86,8 +86,8 @@ Table of Contents
 1.  Introduction
 
    Digital twin is a virtual instance of a physical system (twin) that
-   is continually updated with the latter's performance, maintenance,
-   and health status data throughout the physical system's life cycle.
+   is continually updated with the latest model's performance,
+   and health status data throughout the physical system's management lifecycle.
    Network Digital Twin (NDT) is a digital twin that is used in the
    context of networking [I-D.irtf-nmrg-network-digital-twin-arch].  NDT
    can be used as a secure and cost-effective environment for network
@@ -96,7 +96,7 @@ Table of Contents
    for NDT modeling.
 
    The quality of AI models mainly depends on two aspects: model
-   architecture and data.  This memo focuses on the impact of training
+   architecture and data.  This memo focuses on the impact analysis of training
    data on the model.  The quality of training data will directly affect
    the accuracy and generalization ability of the model.  This memo
    focuses on how to design data generation and optimization methods for
@@ -131,16 +131,16 @@ Table of Contents
 
 3.  Requirements
 
-   Performance modeling is vital in NDT, which is involved in typical
-   network management scenarios such as planning, operation,
-   optimization, and upgrade.  Recently, some studies have applied AI
-   models to NDT performance modeling, such as RouteNet [RouteNet] and
-   MimicNet [MimicNet].  AI is a data-driven technology whose
-   performance heavily depends on data quality.
+   The modeling performance is vital in NDT, which is involved in typical
+   network management scenarios such as planning, construction,
+   optimization, and operation.  Recently, some studies have applied AI
+   models to evaluate NDT modeling performance, such as RouteNet [RouteNet] and
+   MimicNet [MimicNet].  Since AI is a data-driven technology, therefore the
+   modeling performance heavily depends on data quality.
 
-   Network data sources are diverse and of varying quality, making it
-   difficult to directly serve as training data for NDT performance
-   models:
+   In many cases, Network data sources are diverse and of varying quality, making it
+   difficult to directly serve as training data for NDT
+   model performance evaluation:
 
    *  Practical data from production networks: Data from production
       networks usually have high value, but the quantity, type, and
@@ -164,7 +164,7 @@ Table of Contents
       networks.
 
    Therefore, data generation and optimization methods for NDT
-   performance modeling are needed, which can generate simulated network
+   modeling performance are needed, which can generate simulated network
    data to solve the problem of practical data shortage and select high-
    quality data from multi-source data.  High-quality data meets the
    requirements of high accuracy, diversity, and fitting the actual
@@ -173,8 +173,8 @@ Table of Contents
 
 4.  Framework of Data Generation and Optimization
 
-   The framework of data generation and optimization for NDT performance
-   modeling is shown in Figure 1, which includes two stages: the data
+   The framework of data generation and optimization for NDT modeling performance
+   is shown in Figure 1, which includes two stages: the data
    generation stage and the data optimization stage.
 
           Data generation                   Data optimization
@@ -217,10 +217,10 @@ Table of Contents
       possible.  Topology configurations include the number and
       structure of nodes and edges, node buffers' size and scheduling
       strategy, link capacity, etc.  Routing policy determines the path
-      of a packet from the source to the destination.  The traffic
-      matrix describes the traffic entering/leaving the network, which
-      includes the traffic's source, destination, time and packet size
-      distribution, Type of Service (ToS), etc.
+      of a packet taking from the source to the destination.  The traffic
+      matrix describes the traffic entering/leaving the network, and leaving
+      the footprint in the paths of the network which includes the traffic's
+      source, destination, time and packet size distribution, Type of Service (ToS), etc.
 
    *  Data generators: Data generators can be network simulators (e.g.,
       NS-3 and OMNeT++) and/or the generative AI models (e.g., GPT and
@@ -299,7 +299,7 @@ Table of Contents
 5.3.  Traffic Matrix
 
    The traffic matrix is very important for network performance
-   modeling.  The traffic matrix can be regarded as a network map, which
+   modeling.  The traffic matrix can be seen as a network map, which
    describes the traffic entering/leaving the network, including the
    source, destination, distribution of the traffic, etc.
 
@@ -401,7 +401,7 @@ Table of Contents
 7.  Use Cases
 
    NDT can be applied to various types of networks, including data
-   center networks, IP bearer networks, vehicular networks, wireless
+   center networks, IP transport networks, vehicular networks, wireless
    networks, optical networks, and IoT networks.  This section
    highlights the significance of data generation and optimization in
    NDT by presenting several typical use cases.
@@ -426,7 +426,7 @@ Table of Contents
    processing, tend to peak during the day, whereas workloads for online
    analytical processing are more prevalent at night.
 
-7.2.  Performance Prediction in IP Bearer Networks
+7.2.  Performance Prediction in IP Transport Networks
 
    Internet service providers encounter challenges in delivering high-
    bandwidth, low-latency, and reliable services, especially in large
@@ -434,7 +434,7 @@ Table of Contents
    IP protocol adheres to a best-effort principle, making predictable
    performance difficult and complicating the stability and availability
    of network services during failures.  NDT can function as a high-
-   fidelity simulation platform for predicting IP bearer network
+   fidelity simulation platform for predicting IP Transport network
    performance.  Accurate network status information is vital for
    optimizing protocols and identifying faults.  Recent advancements in
    in-band network telemetry (INT) technology have allowed the
