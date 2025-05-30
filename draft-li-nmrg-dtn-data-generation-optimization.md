@@ -35,6 +35,14 @@ author:
     city: Beijing
     country: China
     email: chendanyang@chinamobile.com
+-
+    fullname: Qin Wu
+    organization: Huawei
+    email: bill.wu@huawei.com
+-
+    fullname: Yuanyuan Yang
+    organization: Huawei
+    email: yangyuanyuan55@huawei.com
 
 normative:
 
