@@ -58,7 +58,7 @@ informative:
     author:
       org: ACM Computing Surveys
     date: 2025
-    
+
   RouteNet:
     title: "RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"
     author:
