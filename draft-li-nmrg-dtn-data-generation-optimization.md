@@ -60,16 +60,22 @@ informative:
     date: 2025
 
   RouteNet:
-    title: "RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"
+    title: "RouteNet-Fermi: Network Modeling With Graph Neural Networks"
     author:
-      org: IEEE Journal on Selected Areas in Communication (JSAC)
-    date: 2020
+      org: IEEE/ACM Transactions on Networking
+    date: 2023
 
   MimicNet:
     title: "MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"
     author:
       org: ACM SIGCOMM 2021 Conference
     date: 2021
+
+  m3:
+    title: "m3: Accurate Flow-Level Performance Estimation using Machine Learning"
+    author:
+      org: ACM SIGCOMM 2024 Conference
+    date: 2024
 
 --- abstract
 
@@ -79,7 +85,9 @@ Network Digital Twin (NDT) can be used as a secure and cost-effective environmen
 
 # Introduction
 
-Digital twin is a virtual instance of a physical system (twin) that is continually updated with the latter's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking {{I-D.irtf-nmrg-network-digital-twin-arch}}.  NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, AI models, especially neural networks, have been applied for NDT modeling.
+Digital twin is a virtual instance of a physical system (twin) that is continually updated with the physical system's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking {{I-D.irtf-nmrg-network-digital-twin-arch}}. NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. NDT is applicable to various types of networks, such as wireless networks, optical networks, data center networks, Internet of Things (IoT) networks, and vehicular networks.
+
+Artificial Intelligence (AI) models, particularly neural networks (NNs), have proven to be highly effective in modeling complex network environments for various applications, including performance evaluation, traffic prediction, resource allocation, and service self-healing. AI-driven network modeling facilitates the creation of real-time, lightweight, and highly accurate NDT.
 
 The quality of AI models mainly depends on two aspects: model architecture and data. The role of data has recently been highlighted by the emerging concept of data-centric AI {{Data-Centric-AI}}. This memo focuses on the impact of training data on the model. The quality of training data will directly affect the accuracy and generalization ability of the model. This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources. Using high-quality data for training can improve the accuracy and generalization ability of the model.
 
@@ -109,12 +117,14 @@ CBR: Constant Bit Rate
 
 # Requirements
 
-The modeling performance is vital in NDT, which is involved in typical network management scenarios such as planning, construction, operation, optimization, and operation.  Recently, some studies have applied AI models to NDT modeling, such as RouteNet {{RouteNet}} and MimicNet {{MimicNet}}. AI is a data-driven technology whose performance heavily depends on data quality.
+The modeling performance is vital in NDT, which is involved in typical network management scenarios such as planning, construction, operation, optimization, and operation.  Recently, some studies have applied AI models to NDT modeling, such as RouteNet {{RouteNet}}, MimicNet {{MimicNet}} and m3 {{m3}}. AI is a data-driven technology whose performance heavily depends on data quality.
 
-In many cases, network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:
+Data-centric AI {{Data-Centric-AI}} shifts the focus from model architecture to improving data through various techniques such as data augmentation, self-supervision, data cleaning, data selection, and data privacy. For example, data augmentation can create additional augmented samples. Self-supervised models can be developed without the need for manual labels or features. Data selection methods can help identify the most valuable samples.
+
+In many cases, network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT AI models:
 
 - Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited. Moreover, it is not practical in production networks to collect data under various configurations;
-- Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent.  However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;
+- Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent. However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;
 - Generative AI models: With the development of AI-Generated Content (AIGC) technology, generative AI models (e.g., GPT and LLaMA) can be used to generate simulated network data, which can solve the problems of quantity and diversity to a certain extent. However, the accuracy of the data generated by generative AI models is limited and often has gaps with practical data from production networks.
 
 Therefore, data generation and optimization methods for NDT modeling are needed, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from multi-source data. High-quality data meets the requirements of high accuracy, diversity, and fitting the actual situation of practical data. Training with high-quality data can improve the accuracy and generalization of NDT performance models.
