@@ -172,7 +172,7 @@ The data generation stage aims to generate candidate data (simulated network dat
 The data optimization stage aims to optimize the candidate data from various sources to select high-quality data.
 
 - Candidate data: Candidate data includes simulated network data generated in the data generation stage and the practical data from production networks.
-- Data selection: The data selection module investigates the candidate data to filter out the easy, hard, and Out-of- Distribution (OOD) samples. Hard examples refer to samples that are difficult for the model to accurately predict. During the training process, exposing the model to more hard examples will enable it to perform better on such samples later on.  Then the easy samples and hard samples are considered valid samples and added to the training data. OOD samples are considered invalid and removed.
+- Data selection: The data selection module investigates the candidate data to filter out the easy, hard, and Out-of-Distribution (OOD) samples. Hard examples refer to samples that are difficult for the model to accurately predict. During the training process, exposing the model to more hard examples will enable it to perform better on such samples later on.  Then the easy samples and hard samples are considered valid samples and added to the training data. OOD samples are considered invalid and removed.
 - High-quality data: High-quality data needs to meet the requirements of high accuracy, diversity, and fitting the actual situation of practical data, which can be verified by expert knowledge (such as the ranges of delay, queue utilization, link utilization, and average port occupancy).
 
 # Data Generation
@@ -243,6 +243,10 @@ STEP 4: Expert knowledge verification.
 ## Incremental Optimization Phase
 
 The seed samples are taken as the initial training dataset. The filter model investigates the remaining candidate samples to filter out the easy, hard and OOD samples. Then the easy samples and hard samples are added to the training dataset. These processes are repeated to iteratively optimize the filter model and the training data until the high-quality data meets the constraints.
+
+- Easy samples: Easy samples are data points where the model's predictions align closely with the true labels, often with high confidence. While training on easy samples can lead to good performance on familiar data, relying solely on them may limit the model's ability to handle complex or ambiguous cases, potentially causing overfitting and poor generalization to unseen data.
+- Hard samples: Hard samples are data points where the model struggles, producing inaccurate, ambiguous, or low-confidence predictions. These samples are crucial for improving model robustness and generalization, as they expose weaknesses and encourage learning more discriminative features. Techniques like Online Hard Example Mining (OHEM), contrastive learning (focusing on hard negatives), and curriculum learning (gradually introducing harder samples) leverage hard samples to enhance model performance, prevent overfitting, and identify potential data issues such as labeling errors or biases.
+- OOD samples: OOD samples refer to data points that significantly deviate from the training distribution, which should be detected and removed. Common detection methods include uncertainty estimation (e.g., Bayesian neural networks), density-based approaches (e.g., VAEs), distance-based metrics (e.g., Mahalanobis distance), outlier exposure, and energy-based models.
 
 # Use Cases
 
