@@ -418,6 +418,31 @@ Table of Contents
    repeated to iteratively optimize the filter model and the training
    data until the high-quality data meets the constraints.
 
+   *  Easy samples: Easy samples are data points where the model's
+      predictions align closely with the true labels, often with high
+      confidence.  While training on easy samples can lead to good
+      performance on familiar data, relying solely on them may limit the
+      model's ability to handle complex or ambiguous cases, potentially
+      causing overfitting and poor generalization to unseen data.
+
+   *  Hard samples: Hard samples are data points where the model
+      struggles, producing inaccurate, ambiguous, or low-confidence
+      predictions.  These samples are crucial for improving model
+      robustness and generalization, as they expose weaknesses and
+      encourage learning more discriminative features.  Techniques like
+      Online Hard Example Mining (OHEM), contrastive learning (focusing
+      on hard negatives), and curriculum learning (gradually introducing
+      harder samples) leverage hard samples to enhance model
+      performance, prevent overfitting, and identify potential data
+      issues such as labeling errors or biases.
+
+   *  OOD samples: OOD samples refer to data points that significantly
+      deviate from the training distribution, which should be detected
+      and removed.  Common detection methods include uncertainty
+      estimation (e.g., Bayesian neural networks), density-based
+      approaches (e.g., VAEs), distance-based metrics (e.g., Mahalanobis
+      distance), outlier exposure, and energy-based models.
+
 7.  Use Cases
 
    NDT can be applied to various types of networks, including data
