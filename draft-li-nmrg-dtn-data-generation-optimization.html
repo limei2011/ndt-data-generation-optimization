@@ -1054,7 +1054,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Li, et al.</td>
-<td class="center">Expires 3 January 2026</td>
+<td class="center">Expires 5 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-li-nmrg-dtn-data-generation-optimization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-02" class="published">2 July 2025</time>
+<time datetime="2025-07-04" class="published">4 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-03">3 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-01-05">5 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1122,7 +1122,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1237,8 +1237,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Digital twin is a virtual instance of a physical system (twin) that is continually updated with the latter's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking <span>[<a href="#I-D.irtf-nmrg-network-digital-twin-arch" class="cite xref">I-D.irtf-nmrg-network-digital-twin-arch</a>]</span>.  NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, AI models, especially neural networks, have been applied for NDT modeling.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">The quality of AI models mainly depends on two aspects: model architecture and data. The role of data has recently been highlighted by the emerging concept of data-centric AI <span>[<a href="#Data-Centric-AI" class="cite xref">Data-Centric-AI</a>]</span>. This memo focuses on the impact of training data on the model. The quality of training data will directly affect the accuracy and generalization ability of the model. This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources. Using high-quality data for training can improve the accuracy and generalization ability of the model.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">Digital twin is a virtual instance of a physical system (twin) that is continually updated with the physical system's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking <span>[<a href="#I-D.irtf-nmrg-network-digital-twin-arch" class="cite xref">I-D.irtf-nmrg-network-digital-twin-arch</a>]</span>. NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. NDT is applicable to various types of networks, such as wireless networks, optical networks, data center networks, Internet of Things (IoT) networks, and vehicular networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Artificial Intelligence (AI) models, particularly neural networks (NNs), have proven to be highly effective in modeling complex network environments for various applications, including performance evaluation, traffic prediction, resource allocation, and service self-healing. AI-driven network modeling facilitates the creation of real-time, lightweight, and highly accurate NDT.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The quality of AI models mainly depends on two aspects: model architecture and data. The role of data has recently been highlighted by the emerging concept of data-centric AI <span>[<a href="#Data-Centric-AI" class="cite xref">Data-Centric-AI</a>]</span>. This memo focuses on the impact of training data on the model. The quality of training data will directly affect the accuracy and generalization ability of the model. This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources. Using high-quality data for training can improve the accuracy and generalization ability of the model.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="acronyms-and-abbreviations">
@@ -1264,20 +1265,21 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-requirements">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
-<p id="section-3-1">The modeling performance is vital in NDT, which is involved in typical network management scenarios such as planning, construction, operation, optimization, and operation.  Recently, some studies have applied AI models to NDT modeling, such as RouteNet <span>[<a href="#RouteNet" class="cite xref">RouteNet</a>]</span> and MimicNet <span>[<a href="#MimicNet" class="cite xref">MimicNet</a>]</span>. AI is a data-driven technology whose performance heavily depends on data quality.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">In many cases, network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT performance models:<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-1">The modeling performance is vital in NDT, which is involved in typical network management scenarios such as planning, construction, operation, optimization, and operation.  Recently, some studies have applied AI models to NDT modeling, such as RouteNet <span>[<a href="#RouteNet" class="cite xref">RouteNet</a>]</span>, MimicNet <span>[<a href="#MimicNet" class="cite xref">MimicNet</a>]</span> and m3 <span>[<a href="#m3" class="cite xref">m3</a>]</span>. AI is a data-driven technology whose performance heavily depends on data quality.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">Data-centric AI <span>[<a href="#Data-Centric-AI" class="cite xref">Data-Centric-AI</a>]</span> shifts the focus from model architecture to improving data through various techniques such as data augmentation, self-supervision, data cleaning, data selection, and data privacy. For example, data augmentation can create additional augmented samples. Self-supervised models can be developed without the need for manual labels or features. Data selection methods can help identify the most valuable samples.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">In many cases, network data sources are diverse and of varying quality, making it difficult to directly serve as training data for NDT AI models:<a href="#section-3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3-3.1">
-          <p id="section-3-3.1.1">Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited. Moreover, it is not practical in production networks to collect data under various configurations;<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3-4.1">
+          <p id="section-3-4.1.1">Practical data from production networks: Data from production networks usually have high value, but the quantity, type, and accuracy are limited. Moreover, it is not practical in production networks to collect data under various configurations;<a href="#section-3-4.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-3-3.2">
-          <p id="section-3-3.2.1">Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent.  However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;<a href="#section-3-3.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-3-4.2">
+          <p id="section-3-4.2.1">Network simulators: Network simulators (e.g., NS-3 and OMNeT++) can be used to generate simulated network data, which can solve the problems of quantity, diversity, and accuracy to a certain extent. However, simulation is usually time-consuming. In addition, there are usually differences between simulated data and practical data from production networks, which hinders the application of trained models to production networks;<a href="#section-3-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-3-3.3">
-          <p id="section-3-3.3.1">Generative AI models: With the development of AI-Generated Content (AIGC) technology, generative AI models (e.g., GPT and LLaMA) can be used to generate simulated network data, which can solve the problems of quantity and diversity to a certain extent. However, the accuracy of the data generated by generative AI models is limited and often has gaps with practical data from production networks.<a href="#section-3-3.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-3-4.3">
+          <p id="section-3-4.3.1">Generative AI models: With the development of AI-Generated Content (AIGC) technology, generative AI models (e.g., GPT and LLaMA) can be used to generate simulated network data, which can solve the problems of quantity and diversity to a certain extent. However, the accuracy of the data generated by generative AI models is limited and often has gaps with practical data from production networks.<a href="#section-3-4.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-3-4">Therefore, data generation and optimization methods for NDT modeling are needed, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from multi-source data. High-quality data meets the requirements of high accuracy, diversity, and fitting the actual situation of practical data. Training with high-quality data can improve the accuracy and generalization of NDT performance models.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">Therefore, data generation and optimization methods for NDT modeling are needed, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from multi-source data. High-quality data meets the requirements of high accuracy, diversity, and fitting the actual situation of practical data. Training with high-quality data can improve the accuracy and generalization of NDT performance models.<a href="#section-3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="framework-of-data-generation-and-optimization">
@@ -1520,13 +1522,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <dd>
 <span class="refTitle">"Network Digital Twin: Concepts and Reference Architecture"</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/">https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="m3">[m3]</dt>
+      <dd>
+<span class="refAuthor">ACM SIGCOMM 2024 Conference</span>, <span class="refTitle">"m3: Accurate Flow-Level Performance Estimation using Machine Learning"</span>, <time datetime="2024" class="refDate">2024</time>. </dd>
+<dd class="break"></dd>
 <dt id="MimicNet">[MimicNet]</dt>
       <dd>
 <span class="refAuthor">ACM SIGCOMM 2021 Conference</span>, <span class="refTitle">"MimicNet: Fast Performance Estimates for Data Center Networks with Machine Learning"</span>, <time datetime="2021" class="refDate">2021</time>. </dd>
 <dd class="break"></dd>
 <dt id="RouteNet">[RouteNet]</dt>
     <dd>
-<span class="refAuthor">IEEE Journal on Selected Areas in Communication (JSAC)</span>, <span class="refTitle">"RouteNet: Leveraging Graph Neural Networks for network modeling and optimization in SDN"</span>, <time datetime="2020" class="refDate">2020</time>. </dd>
+<span class="refAuthor">IEEE/ACM Transactions on Networking</span>, <span class="refTitle">"RouteNet-Fermi: Network Modeling With Graph Neural Networks"</span>, <time datetime="2023" class="refDate">2023</time>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

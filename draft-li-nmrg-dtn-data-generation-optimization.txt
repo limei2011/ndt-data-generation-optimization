@@ -5,11 +5,11 @@
 Network Management                                                 M. Li
 Internet-Draft                                                   C. Zhou
 Intended status: Informational                                   D. Chen
-Expires: 3 January 2026                                     China Mobile
+Expires: 5 January 2026                                     China Mobile
                                                                    Q. Wu
                                                                  Y. Yang
                                                                   Huawei
-                                                             2 July 2025
+                                                             4 July 2025
 
 
        Data Generation and Optimization for Network Digital Twin
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 5 January 2026.
 
 Copyright Notice
 
@@ -86,14 +86,23 @@ Table of Contents
 1.  Introduction
 
    Digital twin is a virtual instance of a physical system (twin) that
-   is continually updated with the latter's performance, maintenance,
-   and health status data throughout the physical system's life cycle.
-   Network Digital Twin (NDT) is a digital twin that is used in the
-   context of networking [I-D.irtf-nmrg-network-digital-twin-arch].  NDT
-   can be used as a secure and cost-effective environment for network
-   operators to evaluate network in various what-if scenarios.
-   Recently, AI models, especially neural networks, have been applied
-   for NDT modeling.
+   is continually updated with the physical system's performance,
+   maintenance, and health status data throughout the physical system's
+   life cycle.  Network Digital Twin (NDT) is a digital twin that is
+   used in the context of networking
+   [I-D.irtf-nmrg-network-digital-twin-arch].  NDT can be used as a
+   secure and cost-effective environment for network operators to
+   evaluate network in various what-if scenarios.  NDT is applicable to
+   various types of networks, such as wireless networks, optical
+   networks, data center networks, Internet of Things (IoT) networks,
+   and vehicular networks.
+
+   Artificial Intelligence (AI) models, particularly neural networks
+   (NNs), have proven to be highly effective in modeling complex network
+   environments for various applications, including performance
+   evaluation, traffic prediction, resource allocation, and service
+   self-healing.  AI-driven network modeling facilitates the creation of
+   real-time, lightweight, and highly accurate NDT.
 
    The quality of AI models mainly depends on two aspects: model
    architecture and data.  The role of data has recently been
@@ -136,13 +145,21 @@ Table of Contents
    The modeling performance is vital in NDT, which is involved in
    typical network management scenarios such as planning, construction,
    operation, optimization, and operation.  Recently, some studies have
-   applied AI models to NDT modeling, such as RouteNet [RouteNet] and
-   MimicNet [MimicNet].  AI is a data-driven technology whose
-   performance heavily depends on data quality.
+   applied AI models to NDT modeling, such as RouteNet [RouteNet],
+   MimicNet [MimicNet] and m3 [m3].  AI is a data-driven technology
+   whose performance heavily depends on data quality.
+
+   Data-centric AI [Data-Centric-AI] shifts the focus from model
+   architecture to improving data through various techniques such as
+   data augmentation, self-supervision, data cleaning, data selection,
+   and data privacy.  For example, data augmentation can create
+   additional augmented samples.  Self-supervised models can be
+   developed without the need for manual labels or features.  Data
+   selection methods can help identify the most valuable samples.
 
    In many cases, network data sources are diverse and of varying
    quality, making it difficult to directly serve as training data for
-   NDT performance models:
+   NDT AI models:
 
    *  Practical data from production networks: Data from production
       networks usually have high value, but the quantity, type, and
@@ -506,13 +523,15 @@ Table of Contents
               Architecture", 2025, <https://datatracker.ietf.org/doc/
               draft-irtf-nmrg-network-digital-twin-arch/>.
 
+   [m3]       ACM SIGCOMM 2024 Conference, "m3: Accurate Flow-Level
+              Performance Estimation using Machine Learning", 2024.
+
    [MimicNet] ACM SIGCOMM 2021 Conference, "MimicNet: Fast Performance
               Estimates for Data Center Networks with Machine Learning",
               2021.
 
-   [RouteNet] IEEE Journal on Selected Areas in Communication (JSAC),
-              "RouteNet: Leveraging Graph Neural Networks for network
-              modeling and optimization in SDN", 2020.
+   [RouteNet] IEEE/ACM Transactions on Networking, "RouteNet-Fermi:
+              Network Modeling With Graph Neural Networks", 2023.
 
 Acknowledgments
 
