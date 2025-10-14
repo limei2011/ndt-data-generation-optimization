@@ -177,9 +177,11 @@ The data optimization stage aims to optimize the candidate data from various sou
 
 # Data Generation
 
+## Network Configuration
+
 This section will describe how to generate network configurations, including network topology, routing policy, and traffic matrix. Then these configurations will be imported into data generators to generate the candidate data.
 
-## Network Topology
+### Network Topology
 
 Network topologies are generated using the Power-Law Out-Degree algorithm, where parameters are set according to real-world topologies in the Internet Topology Zoo.
 
@@ -187,14 +189,14 @@ When the flow rate exceeds the link bandwidth or the bandwidth set for the flow,
 
 A larger link capacity means a smaller delay and less congestion. To cover diverse link loads to get good coverage of possible scenarios, we set the link capacity to be proportional to the total average bandwidth of the flows passing through the link.
 
-## Routing Policy
+### Routing Policy
 
 Routing policy plays a crucial role in routing protocols, which determines the path of a packet from the source to the destination.
 
 - Default: We set the weight of all links in the topology to be the same, that is, equal to 1. Then we use the Dijkstra algorithm to generate the shortest path configuration. Dijkstra algorithm uses Breadth-First Search (BFS) to find the single source shortest path in a weighted digraph.
 - Variants: We randomly select some links (the same link can be chosen more than once) and add a small weight to them. Then we use the Dijkstra algorithm to generate a series of variants of the default shortest path configuration based on the weighted graph. These variants can add some randomness to the routing configuration to cover longer paths and larger delays.
 
-## Traffic Matrix
+### Traffic Matrix
 
 The traffic matrix is very important for network modeling. The traffic matrix can be seen as a network map, which describes the traffic entering/leaving the network, including the source, destination, distribution of the traffic, etc.
 
@@ -203,6 +205,16 @@ We generate traffic matrix configurations with variable traffic intensity to cov
 The parameters packet sizes, packet size probabilities, and ToS are generated according to the validation dataset analysis to have similar distributions.
 
 The arrival of packets for each source-destination pair is modeled using one of the time distributions such as Poisson, Constant Bit Rate (CBR), and ON-OFF.
+
+## Data Generator
+
+### Network Simulator
+
+TBD
+
+### Generative AI Model
+
+TBD
 
 # Data Optimization
 
