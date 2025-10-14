@@ -5,11 +5,11 @@
 Network Management                                                 M. Li
 Internet-Draft                                                   C. Zhou
 Intended status: Informational                                   D. Chen
-Expires: 5 January 2026                                     China Mobile
+Expires: 17 April 2026                                      China Mobile
                                                                    Q. Wu
                                                                  Y. Yang
                                                                   Huawei
-                                                             4 July 2025
+                                                         14 October 2025
 
 
        Data Generation and Optimization for Network Digital Twin
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 January 2026.
+   This Internet-Draft will expire on 17 April 2026.
 
 Copyright Notice
 
@@ -65,9 +65,13 @@ Table of Contents
      4.1.  Data Generation Stage
      4.2.  Data Optimization Stage
    5.  Data Generation
-     5.1.  Network Topology
-     5.2.  Routing Policy
-     5.3.  Traffic Matrix
+     5.1.  Network Configuration
+       5.1.1.  Network Topology
+       5.1.2.  Routing Policy
+       5.1.3.  Traffic Matrix
+     5.2.  Data Generator
+       5.2.1.  Network Simulator
+       5.2.2.  Generative AI Model
    6.  Data Optimization
      6.1.  Seed Sample Selection Phase
      6.2.  Incremental Optimization Phase
@@ -274,12 +278,14 @@ Table of Contents
 
 5.  Data Generation
 
+5.1.  Network Configuration
+
    This section will describe how to generate network configurations,
    including network topology, routing policy, and traffic matrix.  Then
    these configurations will be imported into data generators to
    generate the candidate data.
 
-5.1.  Network Topology
+5.1.1.  Network Topology
 
    Network topologies are generated using the Power-Law Out-Degree
    algorithm, where parameters are set according to real-world
@@ -298,7 +304,7 @@ Table of Contents
    we set the link capacity to be proportional to the total average
    bandwidth of the flows passing through the link.
 
-5.2.  Routing Policy
+5.1.2.  Routing Policy
 
    Routing policy plays a crucial role in routing protocols, which
    determines the path of a packet from the source to the destination.
@@ -316,7 +322,7 @@ Table of Contents
       These variants can add some randomness to the routing
       configuration to cover longer paths and larger delays.
 
-5.3.  Traffic Matrix
+5.1.3.  Traffic Matrix
 
    The traffic matrix is very important for network modeling.  The
    traffic matrix can be seen as a network map, which describes the
@@ -333,6 +339,16 @@ Table of Contents
    The arrival of packets for each source-destination pair is modeled
    using one of the time distributions such as Poisson, Constant Bit
    Rate (CBR), and ON-OFF.
+
+5.2.  Data Generator
+
+5.2.1.  Network Simulator
+
+   TBD
+
+5.2.2.  Generative AI Model
+
+   TBD
 
 6.  Data Optimization
 
