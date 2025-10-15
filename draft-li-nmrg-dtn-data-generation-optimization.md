@@ -77,6 +77,18 @@ informative:
       org: ACM SIGCOMM 2024 Conference
     date: 2024
 
+  flowSim:
+    title: "Bandwidth sharing: objectives and algorithms"
+    author:
+      org: IEEE INFOCOM
+    date: 1999
+
+  ASTRA-sim:
+    title: "Astra-sim2. 0: Modeling hierarchical networks and disaggregated systems for large-model training at scale"
+    author:
+      org: IEEE ISPASS
+    date: 2023
+
 --- abstract
 
 Network Digital Twin (NDT) can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. Recently, Artificial Intelligence (AI) models, especially neural networks, have been applied for NDT modeling. The quality of deep learning models mainly depends on two aspects: model architecture and data.  This memo focuses on how to improve the model quality from the data perspective.
@@ -210,11 +222,17 @@ The arrival of packets for each source-destination pair is modeled using one of 
 
 ### Network Simulator
 
-TBD
+Network simulators make distinct trade-offs among fidelity, speed, and scale, and can be broadly classified into three categories:
+
+- Packet-level simulation explicitly models the generation, transmission, and processing of individual packets. This approach achieves high fidelity and enables detailed observation of microscopic behaviors—such as protocol dynamics (e.g., TCP congestion control) and per-packet queueing effects. It is widely considered the reference method for evaluating mechanisms like new transport protocols and latency-sensitive applications. However, the high computational cost typically limits its use to small- or moderate-scale network scenarios. Representative tools include ns-3 and OMNeT++.
+
+- Flow-level simulation abstracts traffic into continuous flows, described by aggregate parameters such as average rate. This method achieves high scalability and is well-suited for macroscopic studies—such as Internet-wide traffic engineering, routing convergence, and capacity planning. While it sacrifices packet-level details (e.g., burst-induced queueing behavior), it remains effective for analyzing large-scale network properties where fine-grained fidelity is not critical. Typical implementations include flowSim {{flowSim}} and ASTRA-sim {{ASTRA-sim}}.
+
+- Analytical modeling, often grounded in queueing theory, employs mathematical formulations to represent network behavior. This approach offers the highest computational efficiency and is particularly useful for deriving performance bounds and understanding fundamental trade-offs among system parameters. It is commonly applied to analyze idealized network elements, such as a single buffered link. A key limitation, however, is its reliance on simplifying assumptions, which may not capture the full complexity and variability of real-world traffic.
 
 ### Generative AI Model
 
-TBD
+Generative AI (GenAI) presents a novel paradigm for synthesizing network data. By learning the underlying distributions and complex temporal dynamics from existing network traces, generative models—such as Generative Adversarial Networks (GANs), Variational Autoencoders (VAEs), and Diffusion Models—can produce realistic, high-dimensional network traffic data. This capability is particularly valuable in scenarios where real data is scarce, sensitive, or difficult to obtain. For instance, GenAI can be used to generate synthetic packet traces that preserve the statistical properties and temporal dependencies of real traffic without exposing private information, thus facilitating data-sharing for research. It can also model rare but critical events, such as network attacks or flash crowds, to augment datasets for robustly training intrusion detection systems or evaluating protocol resilience under stress. A key consideration, however, is the fidelity and representativeness of the generated data, which hinges on the quality of the training data and the model's ability to capture the full breadth of network stochasticity, avoiding the introduction of subtle biases or unrealistic artifacts.
 
 # Data Optimization
 
