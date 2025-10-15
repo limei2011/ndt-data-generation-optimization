@@ -5,11 +5,11 @@
 Network Management                                                 M. Li
 Internet-Draft                                                   C. Zhou
 Intended status: Informational                                   D. Chen
-Expires: 17 April 2026                                      China Mobile
+Expires: 18 April 2026                                      China Mobile
                                                                    Q. Wu
                                                                  Y. Yang
                                                                   Huawei
-                                                         14 October 2025
+                                                         15 October 2025
 
 
        Data Generation and Optimization for Network Digital Twin
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2026.
+   This Internet-Draft will expire on 18 April 2026.
 
 Copyright Notice
 
@@ -344,11 +344,62 @@ Table of Contents
 
 5.2.1.  Network Simulator
 
-   TBD
+   Network simulators make distinct trade-offs among fidelity, speed,
+   and scale, and can be broadly classified into three categories:
+
+   *  Packet-level simulation explicitly models the generation,
+      transmission, and processing of individual packets.  This approach
+      achieves high fidelity and enables detailed observation of
+      microscopic behaviors—such as protocol dynamics (e.g., TCP
+      congestion control) and per-packet queueing effects.  It is widely
+      considered the reference method for evaluating mechanisms like new
+      transport protocols and latency-sensitive applications.  However,
+      the high computational cost typically limits its use to small- or
+      moderate-scale network scenarios.  Representative tools include
+      ns-3 and OMNeT++.
+
+   *  Flow-level simulation abstracts traffic into continuous flows,
+      described by aggregate parameters such as average rate.  This
+      method achieves high scalability and is well-suited for
+      macroscopic studies—such as Internet-wide traffic engineering,
+      routing convergence, and capacity planning.  While it sacrifices
+      packet-level details (e.g., burst-induced queueing behavior), it
+      remains effective for analyzing large-scale network properties
+      where fine-grained fidelity is not critical.  Typical
+      implementations include flowSim [flowSim] and ASTRA-sim
+      [ASTRA-sim].
+
+   *  Analytical modeling, often grounded in queueing theory, employs
+      mathematical formulations to represent network behavior.  This
+      approach offers the highest computational efficiency and is
+      particularly useful for deriving performance bounds and
+      understanding fundamental trade-offs among system parameters.  It
+      is commonly applied to analyze idealized network elements, such as
+      a single buffered link.  A key limitation, however, is its
+      reliance on simplifying assumptions, which may not capture the
+      full complexity and variability of real-world traffic.
 
 5.2.2.  Generative AI Model
 
-   TBD
+   Generative AI (GenAI) presents a novel paradigm for synthesizing
+   network data.  By learning the underlying distributions and complex
+   temporal dynamics from existing network traces, generative
+   models—such as Generative Adversarial Networks (GANs), Variational
+   Autoencoders (VAEs), and Diffusion Models—can produce realistic,
+   high-dimensional network traffic data.  This capability is
+   particularly valuable in scenarios where real data is scarce,
+   sensitive, or difficult to obtain.  For instance, GenAI can be used
+   to generate synthetic packet traces that preserve the statistical
+   properties and temporal dependencies of real traffic without exposing
+   private information, thus facilitating data-sharing for research.  It
+   can also model rare but critical events, such as network attacks or
+   flash crowds, to augment datasets for robustly training intrusion
+   detection systems or evaluating protocol resilience under stress.  A
+   key consideration, however, is the fidelity and representativeness of
+   the generated data, which hinges on the quality of the training data
+   and the model's ability to capture the full breadth of network
+   stochasticity, avoiding the introduction of subtle biases or
+   unrealistic artifacts.
 
 6.  Data Optimization
 
@@ -555,9 +606,17 @@ Table of Contents
 
 11.  Informative References
 
+   [ASTRA-sim]
+              IEEE ISPASS, "Astra-sim2. 0: Modeling hierarchical
+              networks and disaggregated systems for large-model
+              training at scale", 2023.
+
    [Data-Centric-AI]
               ACM Computing Surveys, "Data-centric Artificial
               Intelligence: A Survey", 2025.
+
+   [flowSim]  IEEE INFOCOM, "Bandwidth sharing: objectives and
+              algorithms", 1999.
 
    [I-D.irtf-nmrg-network-digital-twin-arch]
               "Network Digital Twin: Concepts and Reference
