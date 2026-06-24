@@ -143,32 +143,35 @@ Therefore, data generation and optimization methods for NDT modeling are needed,
 
 # Framework of Data Generation and Optimization
 
-The framework of data generation and optimization for NDT modeling is shown in Figure 1, which includes two stages: the data generation stage and the data optimization stage.
+The framework of data generation and optimization for NDT modeling is shown in Figure 1, which includes three stages: the data generation stage, the data optimization stage, and the data assessment stage.
 
 ~~~~
-          Data generation                   Data optimization
-   +---------------------------+ +-------------------------------------+
-   |                           | |                                     |
-   | +---------+               | |              +---------+            |
-   | |         |               | | +----------+ |         |            |
-   | | Network |               | | | Practical| | Easy    |            |
-   | | topology| +-----------+ | | | data     | | samples |            |
-   | |         | |           | | | +-----+----+ |         |            |
-   | |         | | Network   | | |       |      |         | +--------+ |
-   | |         | | simulator | | | +-----v----+ |         | |        | |
-   | | Routing | |           | | | |          | | Hard    | | High   | |
-   | | policy  +->           +-+-+-> Candidate+-> samples +-> quality| |
-   | |         | |           | | | | data     | |         | | data   | |
-   | |         | | Generative| | | |          | |         | |        | |
-   | |         | | AI model  | | | +----------+ |         | +--------+ |
-   | | Traffic | |           | | |              | OOD     |            |
-   | | matrix  | +-----------+ | |              | samples |            |
-   | |         | Data generator| |              | (remove)|            |
-   | +---------+               | |              |         |            |
-   |  Network                  | |              +---------+            |
-   |  configuration            | |             Data selection          |
-   |                           | |                                     |
-   +---------------------------+ +-------------------------------------+
+       Data Generation           Data Optimization          Data Assessment    
++---------------------------+  +--------------------+  +----------------------+
+|                           |  |                    |  |                      |
+| +---------+               |  |  +-----------+     |  | +------------------+ |
+| | Network |               |  |  | Real Netw.|     |  | | Stat. & Distrib. | |
+| | topology| +-----------+ |  |  |   data    |     |  | |  Verification    | |
+| +---------+ |           | |  |  +-----+-----+     |  | +------------------+ |
+|             | Network   | |  |        |       +---+-->          |           |
+| +---------+ | simulator | |  |        v       |   |  | +--------v---------+ |
+| | Routing | |           | |  |    Candidate   |   |  | | Proto Contraint  | |
+| | policy  +->           +-+--+-->   data      |   |  | |  Verification    | |
+| +---------+ |           | |  |        |       |   |  | +------------------+ |
+|             | Generative| |  |        v       |   |  |          |           |
+| +---------+ | AI model  | |  | +------+-------+-+ |  | +--------v---------+ |
+| | Traffic | |           | |  | | Data Selection | |  | | DownsTask Perfor.| |
+| | matrix  | +-----------+ |  | |                | <--| |  Verification    | |
+| +---------+ Data          |  | | - Easy samples | |  | +------------------+ |
+|  Network    generator     |  | | - Hard samples | |  |          |           |
+|  config.                  |  | | - OOD (remove) | |  |          v           |
+|                           |  | +----------------+ |  |   High-quality data  |
++------------^--------------+  +--------------------+  +----------+-----------+
+             |                                                    |            
+             |                                                    |            
++------------+----------------------------------------------------v-----------+
+|                            Data Repository of NDT                           |
++-----------------------------------------------------------------------------+
 ~~~~
 {: #kelem title="Framework of Data Generation and Optimization for NDT" artwork-align="center"}
 
@@ -181,11 +184,16 @@ The data generation stage aims to generate candidate data (simulated network dat
 
 ## Data Optimization Stage
 
-The data optimization stage aims to optimize the candidate data from various sources to select high-quality data.
+The data optimization stage aims to optimize the candidate data from various sources to select candidate high-quality data, which is verified through the data quality assessment stage. 
 
 - Candidate data: Candidate data includes simulated network data generated in the data generation stage and the practical data from production networks.
 - Data selection: The data selection module investigates the candidate data to filter out the easy, hard, and Out-of-Distribution (OOD) samples. Hard examples refer to samples that are difficult for the model to accurately predict. During the training process, exposing the model to more hard examples will enable it to perform better on such samples later on.  Then the easy samples and hard samples are considered valid samples and added to the training data. OOD samples are considered invalid and removed.
-- High-quality data: High-quality data needs to meet the requirements of high accuracy, diversity, and fitting the actual situation of practical data, which can be verified by expert knowledge (such as the ranges of delay, queue utilization, link utilization, and average port occupancy).
+
+## Data Assessment Stage
+
+The data assessment stage aims to verify, from multiple perspectives, whether the data produced by the data optimization stage meets the quality requirements of NDT modeling, and to provide feedback to the data optimization stage to support continuous improvement. It mainly includes sub-modules of Statistical & distribution verification, protocol constraint verification，and downstream task performance verification. The result of this verification is fed back to the data selection module of the data optimization stage , forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.
+
+Data that passes the above verifications is regarded as high-quality data and is stored in the Data Repository of NDT for use in NDT model training and other applications. Data quality dimensions and assessment mechanisms are further detailed in Section 7.
 
 # Data Generation
 
@@ -236,7 +244,7 @@ Generative AI (GenAI) presents a novel paradigm for synthesizing network data. B
 
 # Data Optimization
 
-This section will describe how to optimize the data from various sources to filter out high-quality data, which includes the seed sample selection phase and incremental optimization phase.
+This section describes how to optimize the data from various sources to filter out high-quality data, which includes the seed sample selection phase and incremental optimization phase.
 
 Candidate data includes simulated network data generated in the data generation stage and real data from production networks. Data optimization supports a variety of selection strategies, including high fidelity, high coverage, etc. High fidelity means that the selected data can fit the real data (e.g., having similar topologies, routing policies, traffic models, etc.), and high coverage means that the selected data can cover as many scenarios as possible.
 
@@ -278,6 +286,35 @@ The seed samples are taken as the initial training dataset. The filter model inv
 - Hard samples: Hard samples are data points where the model struggles, producing inaccurate, ambiguous, or low-confidence predictions. These samples are crucial for improving model robustness and generalization, as they expose weaknesses and encourage learning more discriminative features. Techniques like Online Hard Example Mining (OHEM), contrastive learning (focusing on hard negatives), and curriculum learning (gradually introducing harder samples) leverage hard samples to enhance model performance, prevent overfitting, and identify potential data issues such as labeling errors or biases.
 - OOD samples: OOD samples refer to data points that significantly deviate from the training distribution, which should be detected and removed. Common detection methods include uncertainty estimation (e.g., Bayesian neural networks), density-based approaches (e.g., VAEs), distance-based metrics (e.g., Mahalanobis distance), outlier exposure, and energy-based models.
 
+# Data Assessment
+This section defines the data quality dimensions and assessment mechanisms used in the data assessment stage described in Section 4.3, in order to systematically verify whether the data produced by data generation and optimization meets the quality requirements of NDT modeling.
+
+## Data Quality Dimension
+
+The quality of data for NDT modeling can be evaluated along the following dimensions:
+
+- Accuracy: The degree to which the data reflects the actual physical network states or expected behavioural patterns. Accuracy can be assessed by comparing the optimized data against measured data using metrics such as Mean Squared Error (MSE), Mean Absolute Error (MAE), or distribution distance measures.
+
+- Completeness: The degree of coverage of the data across the relevant time, space (e.g., network nodes, links), and feature dimensions. Completeness can be assessed using metrics such as the missing rate of fields or time-series sampling points, and sample coverage rate.
+
+- Consistency: The logical consistency of the data describing the same network entity, across different data sources, time points, or after different processing steps. Consistency can be assessed by comparing statistical values of the same metric obtained from different sources, or by performing logical and temporal verification.
+
+- Timeliness: The delay between data generation/collection and its availability for NDT modeling, which should meet the (near-)real-time requirements of the target NDT application. Timeliness can be assessed using metrics such as the delay between the data collection (or generation) timestamp and the availability timestamp, and the data update frequency.
+
+- Diversity: The degree to which the data covers different network scenarios, configurations, traffic patterns, and rare events such as faults and attacks. Diversity can be assessed using metrics such as feature space coverage, category distribution statistics, or entropy-based diversity measures.
+- Task adaptability: The degree to which the data is suitable for, and improves the performance of, models developed for specific NDT tasks (e.g., performance prediction, fault diagnosis, decision-making). Task adaptability can be assessed using task-specific performance metrics (e.g., accuracy, F1-score, AUC, prediction error) obtained by training and/or validating models with the data.
+
+
+## Data Quality Mechanisms
+
+Data quality assessment can incorporate a hybrid approach combining mathematical verification, protocol validation, and downstream task evaluation, corresponding to the steps illustrated in the data assessment stage of Figure 1.
+
+- Statistical and distribution verification: This step compares statistical and distributional properties of the optimized data against real network data, mainly addressing the Accuracy and Consistency dimensions. Typical methods include Q-Q plots, the Kolmogorov-Smirnov (KS) test, and other distribution-distance measures (e.g., Wasserstein distance).
+
+- Protocol constraint verification: This step verifies whether the optimized data conforms to protocol behaviors and network operational constraints (e.g., valid ranges of delay, queue occupation, and link utilization), so as to filter out data that, although statistically plausible, is not protocol- or physically valid. mainly addressing the Accuracy and Completeness dimensions.
+
+- Downstream task performance verification: This step evaluates the data by training and/or validating models for the target NDT task and measuring task-specific performance metrics, mainly addressing the Task adaptability dimension. The result of this verification is fed back to the data selection module of the data optimization stage, forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.
+
 # Use Cases
 
 NDT can be applied to various types of networks, including data center networks, IP bearer networks, vehicular networks, wireless networks, optical networks, and IoT networks. This section highlights the significance of data generation and optimization in NDT by presenting several typical use cases.
@@ -300,7 +337,8 @@ Several topics related to data generation and optimization for NDT performance m
 
 - Data generation methods: 1) Generate configurations that cover enough scenarios and scale from small to large networks. 2) Choose data generators that consider accuracy, speed, fidelity, etc. 3) Use data augmentation technology to expand the training data by using a small amount of practical data to generate similar data through prior knowledge.
 - Data optimization methods: 1) Select data from multi-source candidate data, including hard sample mining, OOD detection, etc. 2) Verify whether the data quality meets the requirements.
-- Deployment: 1) Time/space complexity and explainability of the data generation and optimization methods. 2) Provide feedback for data collection to form a closed loop.
+- Deployment: Time/space complexity and explainability of the data generation and optimization methods.
+- Directions of standardization: which related research is suitable for promoting standards in IETF?
 
 # Security Considerations
 
