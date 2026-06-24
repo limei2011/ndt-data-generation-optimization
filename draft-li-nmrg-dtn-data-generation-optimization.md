@@ -146,7 +146,7 @@ Therefore, data generation and optimization methods for NDT modeling are needed,
 The framework of data generation and optimization for NDT modeling is shown in Figure 1, which includes three stages: the data generation stage, the data optimization stage, and the data assessment stage.
 
 ~~~~
-       Data Generation           Data Optimization          Data Assessment    
+       Data Generation           Data Optimization          Data Assessment
 +---------------------------+  +--------------------+  +----------------------+
 |                           |  |                    |  |                      |
 | +---------+               |  |  +-----------+     |  | +------------------+ |
@@ -167,8 +167,8 @@ The framework of data generation and optimization for NDT modeling is shown in F
 |  config.                  |  | | - OOD (remove) | |  |          v           |
 |                           |  | +----------------+ |  |   High-quality data  |
 +------------^--------------+  +--------------------+  +----------+-----------+
-             |                                                    |            
-             |                                                    |            
+             |                                                    |
+             |                                                    |
 +------------+----------------------------------------------------v-----------+
 |                            Data Repository of NDT                           |
 +-----------------------------------------------------------------------------+
@@ -184,7 +184,7 @@ The data generation stage aims to generate candidate data (simulated network dat
 
 ## Data Optimization Stage
 
-The data optimization stage aims to optimize the candidate data from various sources to select candidate high-quality data, which is verified through the data quality assessment stage. 
+The data optimization stage aims to optimize the candidate data from various sources to select candidate high-quality data, which is verified through the data quality assessment stage.
 
 - Candidate data: Candidate data includes simulated network data generated in the data generation stage and the practical data from production networks.
 - Data selection: The data selection module investigates the candidate data to filter out the easy, hard, and Out-of-Distribution (OOD) samples. Hard examples refer to samples that are difficult for the model to accurately predict. During the training process, exposing the model to more hard examples will enable it to perform better on such samples later on.  Then the easy samples and hard samples are considered valid samples and added to the training data. OOD samples are considered invalid and removed.
