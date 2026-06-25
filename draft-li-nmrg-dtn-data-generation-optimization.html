@@ -1049,12 +1049,12 @@ svg {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Data Generation and Optimization for Net</td>
+<td class="center">Data Generation and Optimization</td>
 <td class="right">June 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Li, et al.</td>
-<td class="center">Expires 26 December 2026</td>
+<td class="center">Expires 27 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg {
 <dd class="internet-draft">draft-li-nmrg-dtn-data-generation-optimization-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-24" class="published">24 June 2026</time>
+<time datetime="2026-06-25" class="published">25 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-26">26 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-27">27 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1122,7 +1122,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 27 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1267,7 +1267,7 @@ svg {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Digital twin is a virtual instance of a physical system (twin) that is continually updated with the physical system's performance, maintenance, and health status data throughout the physical system's life cycle. Network Digital Twin (NDT) is a digital twin that is used in the context of networking <span>[<a href="#I-D.irtf-nmrg-network-digital-twin-arch" class="cite xref">I-D.irtf-nmrg-network-digital-twin-arch</a>]</span>. NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. NDT is applicable to various types of networks, such as wireless networks, optical networks, data center networks, Internet of Things (IoT) networks, and vehicular networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">Digital twin is a virtual instance of a physical system (twin) that is continually updated with the physical system's performance, maintenance, and health status data throughout the physical system's life cycle.  Network Digital Twin (NDT) is a digital twin that is used in the context of networking, as defined in <span>[<a href="#I-D.irtf-nmrg-network-digital-twin-arch" class="cite xref">I-D.irtf-nmrg-network-digital-twin-arch</a>]</span>. NDT can be used as a secure and cost-effective environment for network operators to evaluate network in various what-if scenarios. NDT is applicable to various types of networks, such as wireless networks, optical networks, data center networks, Internet of Things (IoT) networks, and vehicular networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">Artificial Intelligence (AI) models, particularly neural networks (NNs), have proven to be highly effective in modeling complex network environments for various applications, including performance evaluation, traffic prediction, resource allocation, and service self-healing. AI-driven network modeling facilitates the creation of real-time, lightweight, and highly accurate NDT.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The quality of AI models mainly depends on two aspects: model architecture and data. The role of data has recently been highlighted by the emerging concept of data-centric AI <span>[<a href="#Data-Centric-AI" class="cite xref">Data-Centric-AI</a>]</span>. This memo focuses on the impact of training data on the model. The quality of training data will directly affect the accuracy and generalization ability of the model. This memo focuses on how to design data generation and optimization methods for NDT modeling, which can generate simulated network data to solve the problem of practical data shortage and select high-quality data from various data sources. Using high-quality data for training can improve the accuracy and generalization ability of the model.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
@@ -1322,32 +1322,31 @@ svg {
 <figure id="figure-1">
         <div class="alignCenter art-text artwork" id="section-4-2.1">
 <pre>
-       Data Generation           Data Optimization          Data Assessment
-+---------------------------+  +--------------------+  +----------------------+
-|                           |  |                    |  |                      |
-| +---------+               |  |  +-----------+     |  | +------------------+ |
-| | Network |               |  |  | Real Netw.|     |  | | Stat. &amp; Distrib. | |
-| | topology| +-----------+ |  |  |   data    |     |  | |  Verification    | |
-| +---------+ |           | |  |  +-----+-----+     |  | +------------------+ |
-|             | Network   | |  |        |       +---+--&gt;          |           |
-| +---------+ | simulator | |  |        v       |   |  | +--------v---------+ |
-| | Routing | |           | |  |    Candidate   |   |  | | Proto Contraint  | |
-| | policy  +-&gt;           +-+--+--&gt;   data      |   |  | |  Verification    | |
-| +---------+ |           | |  |        |       |   |  | +------------------+ |
-|             | Generative| |  |        v       |   |  |          |           |
-| +---------+ | AI model  | |  | +------+-------+-+ |  | +--------v---------+ |
-| | Traffic | |           | |  | | Data Selection | |  | | DownsTask Perfor.| |
-| | matrix  | +-----------+ |  | |                | &lt;--| |  Verification    | |
-| +---------+ Data          |  | | - Easy samples | |  | +------------------+ |
-|  Network    generator     |  | | - Hard samples | |  |          |           |
-|  config.                  |  | | - OOD (remove) | |  |          v           |
-|                           |  | +----------------+ |  |   High-quality data  |
-+------------^--------------+  +--------------------+  +----------+-----------+
-             |                                                    |
-             |                                                    |
-+------------+----------------------------------------------------v-----------+
-|                            Data Repository of NDT                           |
-+-----------------------------------------------------------------------------+
+     Data Generation       Data Optimization       Data Assessment
++---------------------+  +--------------------+  +-------------------+
+|                     |  |                    |  |                   |
+| +-------+           |  |  +-----------+     |  | +---------------+ |
+| |Network|           |  |  | Real Netw.|     |  | | Stat &amp; Distr. | |
+| | Topo  | +-------+ |  |  |   data    |     |  | | Verification  | |
+| +-------+ |       | |  |  +-----+-----+     |  | +---------------+ |
+|           | Netw. | |  |        |       +---+--&gt;         |         |
+| +-------+ | Sim.  | |  |        v       |   |  | +-------v-------+ |
+| |Routing| |       | |  |    Candidate   |   |  | | Netw. Constr. | |
+| |policy +-&gt;       +-+--+--&gt;   data      |   |  | | Verification  | |
+| +-------+ |       | |  |        |       |   |  | +---------------+ |
+|           | GenAI | |  |        v       |   |  |         |         |
+| +-------+ | Model | |  | +------+-------+-+ |  | +-------v-------+ |
+| |Traffic| |       | |  | | Data Selection | |  | |  DownsTask    | |
+| |matrix | +-------+ |  | |                | &lt;--| | Verification  | |
+| +-------+   Data    |  | | - Easy samples | |  | +---------------+ |
+|  Network  generator |  | | - Hard samples | |  |         |         |
+|  config.            |  | | - OOD (remove) | |  |         v         |
+|                     |  | +----------------+ |  | High-quality data |
++-----------^---------+  +--------------------+  +---------+---------+
+            |                                              |
++-----------+----------------------------------------------v---------+
+|                         Data Repository of NDT                     |
++--------------------------------------------------------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
@@ -1391,7 +1390,7 @@ svg {
         <h3 id="name-data-assessment-stage">
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-data-assessment-stage" class="section-name selfRef">Data Assessment Stage</a>
         </h3>
-<p id="section-4.3-1">The data assessment stage aims to verify, from multiple perspectives, whether the data produced by the data optimization stage meets the quality requirements of NDT modeling, and to provide feedback to the data optimization stage to support continuous improvement. It mainly includes sub-modules of Statistical &amp; distribution verification, protocol constraint verification，and downstream task performance verification. The result of this verification is fed back to the data selection module of the data optimization stage , forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-1">The data assessment stage aims to verify, from multiple perspectives, whether the data produced by the data optimization stage meets the quality requirements of NDT modeling, and to provide feedback to the data optimization stage to support continuous improvement. It mainly includes sub-modules of statistical &amp; distribution verification, network constraint verification，and downstream task performance verification. The result of this verification is fed back to the data selection module of the data optimization stage , forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">Data that passes the above verifications is regarded as high-quality data and is stored in the Data Repository of NDT for use in NDT model training and other applications. Data quality dimensions and assessment mechanisms are further detailed in Section 7.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1574,13 +1573,13 @@ svg {
 <p id="section-7.2-1">Data quality assessment can incorporate a hybrid approach combining mathematical verification, protocol validation, and downstream task evaluation, corresponding to the steps illustrated in the data assessment stage of Figure 1.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7.2-2.1">
-            <p id="section-7.2-2.1.1">Statistical and distribution verification: This step compares statistical and distributional properties of the optimized data against real network data, mainly addressing the Accuracy and Consistency dimensions. Typical methods include Q-Q plots, the Kolmogorov-Smirnov (KS) test, and other distribution-distance measures (e.g., Wasserstein distance).<a href="#section-7.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-2.1.1">Statistical and distribution verification: This step compares statistical and distributional properties of the optimized data against real network data, mainly addressing the accuracy and consistency dimensions. Typical methods include Q-Q plots, the Kolmogorov-Smirnov (KS) test, and other distribution-distance measures (e.g., Wasserstein distance).<a href="#section-7.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-7.2-2.2">
-            <p id="section-7.2-2.2.1">Protocol constraint verification: This step verifies whether the optimized data conforms to protocol behaviors and network operational constraints (e.g., valid ranges of delay, queue occupation, and link utilization), so as to filter out data that, although statistically plausible, is not protocol- or physically valid. mainly addressing the Accuracy and Completeness dimensions.<a href="#section-7.2-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-2.2.1">Network constraint verification: This step verifies whether the optimized data conforms to protocol behaviors and network operational constraints (e.g., valid ranges of delay, queue occupation, and link utilization), so as to filter out data that, although statistically plausible, is not physically valid, mainly addressing the accuracy and completeness dimensions.<a href="#section-7.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-7.2-2.3">
-            <p id="section-7.2-2.3.1">Downstream task performance verification: This step evaluates the data by training and/or validating models for the target NDT task and measuring task-specific performance metrics, mainly addressing the Task adaptability dimension. The result of this verification is fed back to the data selection module of the data optimization stage, forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.<a href="#section-7.2-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-7.2-2.3.1">Downstream task performance verification: This step evaluates the data by training and/or validating models for the target NDT task and measuring task-specific performance metrics, mainly addressing the task adaptability and timeliness dimension. The result of this verification is fed back to the data selection module of the data optimization stage, forming a closed loop that iteratively improves both the data optimization strategy and the resulting data quality.<a href="#section-7.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1636,7 +1635,7 @@ svg {
           <p id="section-9-2.3.1">Deployment: Time/space complexity and explainability of the data generation and optimization methods.<a href="#section-9-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-9-2.4">
-          <p id="section-9-2.4.1">Directions of standardization: which related research is suitable for promoting standards in IETF?<a href="#section-9-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-9-2.4.1">Directions on standardization: which related research is suitable for promoting standards in IETF?<a href="#section-9-2.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1677,7 +1676,7 @@ svg {
 <dd class="break"></dd>
 <dt id="I-D.irtf-nmrg-network-digital-twin-arch">[I-D.irtf-nmrg-network-digital-twin-arch]</dt>
       <dd>
-<span class="refTitle">"Network Digital Twin: Concepts and Reference Architecture"</span>, <time datetime="2025" class="refDate">2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/">https://datatracker.ietf.org/doc/draft-irtf-nmrg-network-digital-twin-arch/</a>&gt;</span>. </dd>
+<span class="refAuthor">Zhou, C.</span>, <span class="refAuthor">Yang, H.</span>, <span class="refAuthor">Duan, X.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Pastor, A.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">C. Jacquenet</span>, <span class="refTitle">"Network Digital Twin: Concepts and Reference Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-nmrg-network-digital-twin-arch-12</span>, <time datetime="2026-02-27" class="refDate">27 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12">https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-network-digital-twin-arch-12</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="m3">[m3]</dt>
       <dd>

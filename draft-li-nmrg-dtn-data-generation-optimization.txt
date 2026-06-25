@@ -5,11 +5,11 @@
 Network Management                                                 M. Li
 Internet-Draft                                                   C. Zhou
 Intended status: Informational                                   D. Chen
-Expires: 26 December 2026                                   China Mobile
+Expires: 27 December 2026                                   China Mobile
                                                                    Q. Wu
                                                                  Y. Yang
                                                                   Huawei
-                                                            24 June 2026
+                                                            25 June 2026
 
 
        Data Generation and Optimization for Network Digital Twin
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 December 2026.
+   This Internet-Draft will expire on 27 December 2026.
 
 Copyright Notice
 
@@ -97,7 +97,7 @@ Table of Contents
    is continually updated with the physical system's performance,
    maintenance, and health status data throughout the physical system's
    life cycle.  Network Digital Twin (NDT) is a digital twin that is
-   used in the context of networking
+   used in the context of networking, as defined in
    [I-D.irtf-nmrg-network-digital-twin-arch].  NDT can be used as a
    secure and cost-effective environment for network operators to
    evaluate network in various what-if scenarios.  NDT is applicable to
@@ -204,34 +204,33 @@ Table of Contents
    shown in Figure 1, which includes three stages: the data generation
    stage, the data optimization stage, and the data assessment stage.
 
-       Data Generation           Data Optimization          Data Assessment
-+---------------------------+  +--------------------+  +----------------------+
-|                           |  |                    |  |                      |
-| +---------+               |  |  +-----------+     |  | +------------------+ |
-| | Network |               |  |  | Real Netw.|     |  | | Stat. & Distrib. | |
-| | topology| +-----------+ |  |  |   data    |     |  | |  Verification    | |
-| +---------+ |           | |  |  +-----+-----+     |  | +------------------+ |
-|             | Network   | |  |        |       +---+-->          |           |
-| +---------+ | simulator | |  |        v       |   |  | +--------v---------+ |
-| | Routing | |           | |  |    Candidate   |   |  | | Proto Contraint  | |
-| | policy  +->           +-+--+-->   data      |   |  | |  Verification    | |
-| +---------+ |           | |  |        |       |   |  | +------------------+ |
-|             | Generative| |  |        v       |   |  |          |           |
-| +---------+ | AI model  | |  | +------+-------+-+ |  | +--------v---------+ |
-| | Traffic | |           | |  | | Data Selection | |  | | DownsTask Perfor.| |
-| | matrix  | +-----------+ |  | |                | <--| |  Verification    | |
-| +---------+ Data          |  | | - Easy samples | |  | +------------------+ |
-|  Network    generator     |  | | - Hard samples | |  |          |           |
-|  config.                  |  | | - OOD (remove) | |  |          v           |
-|                           |  | +----------------+ |  |   High-quality data  |
-+------------^--------------+  +--------------------+  +----------+-----------+
-             |                                                    |
-             |                                                    |
-+------------+----------------------------------------------------v-----------+
-|                            Data Repository of NDT                           |
-+-----------------------------------------------------------------------------+
+       Data Generation       Data Optimization       Data Assessment
+  +---------------------+  +--------------------+  +-------------------+
+  |                     |  |                    |  |                   |
+  | +-------+           |  |  +-----------+     |  | +---------------+ |
+  | |Network|           |  |  | Real Netw.|     |  | | Stat & Distr. | |
+  | | Topo  | +-------+ |  |  |   data    |     |  | | Verification  | |
+  | +-------+ |       | |  |  +-----+-----+     |  | +---------------+ |
+  |           | Netw. | |  |        |       +---+-->         |         |
+  | +-------+ | Sim.  | |  |        v       |   |  | +-------v-------+ |
+  | |Routing| |       | |  |    Candidate   |   |  | | Netw. Constr. | |
+  | |policy +->       +-+--+-->   data      |   |  | | Verification  | |
+  | +-------+ |       | |  |        |       |   |  | +---------------+ |
+  |           | GenAI | |  |        v       |   |  |         |         |
+  | +-------+ | Model | |  | +------+-------+-+ |  | +-------v-------+ |
+  | |Traffic| |       | |  | | Data Selection | |  | |  DownsTask    | |
+  | |matrix | +-------+ |  | |                | <--| | Verification  | |
+  | +-------+   Data    |  | | - Easy samples | |  | +---------------+ |
+  |  Network  generator |  | | - Hard samples | |  |         |         |
+  |  config.            |  | | - OOD (remove) | |  |         v         |
+  |                     |  | +----------------+ |  | High-quality data |
+  +-----------^---------+  +--------------------+  +---------+---------+
+              |                                              |
+  +-----------+----------------------------------------------v---------+
+  |                         Data Repository of NDT                     |
+  +--------------------------------------------------------------------+
 
-   Figure 1: Framework of Data Generation and Optimization for NDT
+     Figure 1: Framework of Data Generation and Optimization for NDT
 
 4.1.  Data Generation Stage
 
@@ -284,8 +283,8 @@ Table of Contents
    whether the data produced by the data optimization stage meets the
    quality requirements of NDT modeling, and to provide feedback to the
    data optimization stage to support continuous improvement.  It mainly
-   includes sub-modules of Statistical & distribution verification,
-   protocol constraint verification，and downstream task performance
+   includes sub-modules of statistical & distribution verification,
+   network constraint verification，and downstream task performance
    verification.  The result of this verification is fed back to the
    data selection module of the data optimization stage , forming a
    closed loop that iteratively improves both the data optimization
@@ -592,25 +591,26 @@ Table of Contents
 
    *  Statistical and distribution verification: This step compares
       statistical and distributional properties of the optimized data
-      against real network data, mainly addressing the Accuracy and
-      Consistency dimensions.  Typical methods include Q-Q plots, the
+      against real network data, mainly addressing the accuracy and
+      consistency dimensions.  Typical methods include Q-Q plots, the
       Kolmogorov-Smirnov (KS) test, and other distribution-distance
       measures (e.g., Wasserstein distance).
 
-   *  Protocol constraint verification: This step verifies whether the
+   *  Network constraint verification: This step verifies whether the
       optimized data conforms to protocol behaviors and network
       operational constraints (e.g., valid ranges of delay, queue
       occupation, and link utilization), so as to filter out data that,
-      although statistically plausible, is not protocol- or physically
-      valid. mainly addressing the Accuracy and Completeness dimensions.
+      although statistically plausible, is not physically valid, mainly
+      addressing the accuracy and completeness dimensions.
 
    *  Downstream task performance verification: This step evaluates the
       data by training and/or validating models for the target NDT task
       and measuring task-specific performance metrics, mainly addressing
-      the Task adaptability dimension.  The result of this verification
-      is fed back to the data selection module of the data optimization
-      stage, forming a closed loop that iteratively improves both the
-      data optimization strategy and the resulting data quality.
+      the task adaptability and timeliness dimension.  The result of
+      this verification is fed back to the data selection module of the
+      data optimization stage, forming a closed loop that iteratively
+      improves both the data optimization strategy and the resulting
+      data quality.
 
 8.  Use Cases
 
@@ -697,7 +697,7 @@ Table of Contents
    *  Deployment: Time/space complexity and explainability of the data
       generation and optimization methods.
 
-   *  Directions of standardization: which related research is suitable
+   *  Directions on standardization: which related research is suitable
       for promoting standards in IETF?
 
 10.  Security Considerations
@@ -723,9 +723,13 @@ Table of Contents
               algorithms", 1999.
 
    [I-D.irtf-nmrg-network-digital-twin-arch]
-              "Network Digital Twin: Concepts and Reference
-              Architecture", 2025, <https://datatracker.ietf.org/doc/
-              draft-irtf-nmrg-network-digital-twin-arch/>.
+              Zhou, C., Yang, H., Duan, X., Lopez, D., Pastor, A., Wu,
+              Q., Boucadair, M., and C. Jacquenet, "Network Digital
+              Twin: Concepts and Reference Architecture", Work in
+              Progress, Internet-Draft, draft-irtf-nmrg-network-digital-
+              twin-arch-12, 27 February 2026,
+              <https://datatracker.ietf.org/doc/html/draft-irtf-nmrg-
+              network-digital-twin-arch-12>.
 
    [m3]       ACM SIGCOMM 2024 Conference, "m3: Accurate Flow-Level
               Performance Estimation using Machine Learning", 2024.
