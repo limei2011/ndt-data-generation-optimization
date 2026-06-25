@@ -162,7 +162,7 @@ The framework of data generation and optimization for NDT modeling is shown in F
 |  config.            |  | | - OOD (remove) | |  |         v         |
 |                     |  | +----------------+ |  | High-quality data |
 +-----------^---------+  +--------------------+  +---------+---------+
-            |                                              | 
+            |                                              |
 +-----------+----------------------------------------------v---------+
 |                         Data Repository of NDT                     |
 +--------------------------------------------------------------------+
