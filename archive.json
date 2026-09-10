@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-08T02:57:14.194913+00:00",
+  "timestamp": "2026-09-10T02:58:08.926766+00:00",
   "repo": "limei2011/ndt-data-generation-optimization",
   "labels": [
     {
@@ -50,5 +50,48 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOOweU_c8AAAABCzMAtw",
+      "title": "Improve NDT data generation and optimization draft",
+      "url": "https://github.com/limei2011/ndt-data-generation-optimization/pull/1",
+      "state": "MERGED",
+      "author": "Yuanyuan4666",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This pull request improves the draft-li-nmrg-dtn-data-generation-optimization.md.\r\n\r\nMain changes:\r\n- Clarify the scope of data generation and optimization for NDT modeling.\r\n- Improve technical accuracy and readability.\r\n- Refine descriptions of data generation, data optimization, and data assessment.\r\n\r\nThe overall framework and structure remain unchanged.",
+      "createdAt": "2026-09-09T08:32:01Z",
+      "updatedAt": "2026-09-09T09:20:19Z",
+      "baseRepository": "limei2011/ndt-data-generation-optimization",
+      "baseRefName": "main",
+      "baseRefOid": "4d3f18af5634ce1c72687e76c672d6db3d511bee",
+      "headRepository": "Yuanyuan4666/ndt-data-generation-optimization",
+      "headRefName": "patch-1",
+      "headRefOid": "d649cf1ae108287e07dfab42baaca90cfcd9297d",
+      "closedAt": "2026-09-09T09:20:19Z",
+      "mergedAt": "2026-09-09T09:20:19Z",
+      "mergedBy": "limei2011",
+      "mergeCommit": {
+        "oid": "089f86aa3dd70c73d49e5b8b81ac7cf4fb61ad25"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOOweU_c8AAAABMxl2ZA",
+          "commit": {
+            "abbreviatedOid": "d649cf1"
+          },
+          "author": "limei2011",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-09-09T09:20:04Z",
+          "updatedAt": "2026-09-09T09:20:04Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
 }
